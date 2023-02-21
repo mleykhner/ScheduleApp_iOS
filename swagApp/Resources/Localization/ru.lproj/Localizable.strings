@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  swagApp
+
+  Created by Максим Лейхнер on 18.02.2023.
+  
+*/
+"lecture" = "Лк";
+"practical" = "Пз";
+"laboratory" = "Лр";
+"test" = "Зч";
+"exam" = "Зкз";
+"noTask" = "Задания нет";
+"now" = "Сейчас";
+"add" = "Добавить";
+"reportABug" = "Сообщить об ошибке";
+"changeGroup" = "Сменить группу";
