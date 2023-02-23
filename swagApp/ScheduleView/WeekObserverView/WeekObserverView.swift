@@ -10,23 +10,23 @@ import SwiftUIPager
 
 struct WeekObserverView: View {
     
-    init(namespace: Namespace.ID, selectedDay: Binding<Date>, onDateChange: @escaping (Date) -> Any = {_ in return}){
-        self.namespace = namespace
+    init(selectedDay: Binding<Date>, onDateChange: @escaping (Date) -> Any = {_ in return}){
         self._selectedDay = selectedDay
         self.onDateChange = onDateChange
         _vm = StateObject(wrappedValue: WeekObserverViewModel(selectedDay.wrappedValue))
     }
 
-    let namespace: Namespace.ID
     @Binding var selectedDay: Date
     let onDateChange: (Date) -> Any
     
     @State var page: Page = Page.withIndex(3)
     @State var deltaWeeks: [Int] = [-3, -2, -1, 0, 1, 2, 3]
-    
+    @State var disableButtons: Bool = false
     
     @StateObject var vm: WeekObserverViewModel
     @StateObject var tm = ThemeManager.shared
+    
+    @State var previousPageIndex:Int = 3
     
     var body: some View {
         Pager(page: page, data: deltaWeeks, id: \.self) { deltaWeek in
@@ -47,19 +47,29 @@ struct WeekObserverView: View {
                                     .stroke(lineWidth: selectedDay.isSameAs(day) ? 2 : 0)
                                     .frame(width: 46, height: 46)
                             })
-                            .foregroundColor(Color(tm.getTheme().foregroundColor))
+                            .foregroundColor(Color(tm.getTheme().foregroundColor).opacity(day.isSameMonth(selectedDay) ? 1 : 0.4))
                             .frame(maxWidth: .infinity)
-                            .if(deltaWeeks[page.index] == deltaWeek, then: { view in
-                                    view
-                                    .matchedGeometryEffect(id: day, in: namespace)
-                            }) { $0 }
                             
                     }
+                    .disabled(disableButtons)
                 }
             }.padding(.horizontal, 18)
         }
         .singlePagination()
         .pagingPriority(.simultaneous)
+        .onDraggingBegan({
+            disableButtons = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                disableButtons = false
+            })
+        })
+        .onPageWillChange({ (newPage) in
+            withAnimation {
+                //Moving forward or backward a week
+                selectedDay = vm.deltaWeek(delta: (newPage - page.index), day: selectedDay)
+            }
+            _ = onDateChange(selectedDay)
+        })
         .onPageChanged({ newPage in
             if newPage >= deltaWeeks.count - 2 {
                 (1..<4).forEach { _ in
@@ -69,7 +79,7 @@ struct WeekObserverView: View {
                 }
             } else if newPage <= 1 {
                 (1..<4).forEach { _ in
-                    deltaWeeks.insert((deltaWeeks.last ?? 0) + 1, at: 0)
+                    deltaWeeks.insert((deltaWeeks.first ?? 0) - 1, at: 0)
                     deltaWeeks.removeLast()
                     page.index += 1
                 }
@@ -83,9 +93,8 @@ struct WeekObserverView: View {
 
 struct WeekObserverView_Previews: PreviewProvider {
     @State static var selectedDay: Date = Date()
-    @Namespace static var namespace
     static var previews: some View {
-        WeekObserverView(namespace: namespace, selectedDay: $selectedDay)
+        WeekObserverView(selectedDay: $selectedDay)
     }
 }
 

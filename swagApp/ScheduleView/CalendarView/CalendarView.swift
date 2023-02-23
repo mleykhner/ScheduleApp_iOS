@@ -10,7 +10,7 @@ import SwiftUIPager
 
 struct CalendarView: View {
     
-    @Namespace var namespace
+    let onDateChange: (Date) -> Any
     
     @StateObject var vm = CalendarViewModel()
     @StateObject var tm = ThemeManager.shared
@@ -20,7 +20,7 @@ struct CalendarView: View {
     
     @State var selectedDay: Date = Date()
     
-    @State var animationProgress: CGFloat = 0.0
+    @State var draggingProgress: CGFloat = 48
     @State var visibleObserver: Bool = true
     
     
@@ -37,11 +37,9 @@ struct CalendarView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer()
                     Menu {
+                        
                         Button {
                             //Изменить группу
-                            withAnimation {
-                                visibleObserver.toggle()
-                            }
                             
                         } label: {
                             HStack {
@@ -57,6 +55,7 @@ struct CalendarView: View {
                                 Image(systemName: "exclamationmark.triangle")
                             }
                         }
+                        
                     } label: {
                         Image(systemName: "ellipsis")
                             .font(.system(size: 24))
@@ -64,24 +63,28 @@ struct CalendarView: View {
                     }
                 }
                 .foregroundColor(Color(tm.getTheme().foregroundColor))
-                if visibleObserver{
-                    WeekObserverView(namespace: namespace, selectedDay: $selectedDay)
-                        .padding(.horizontal, -18)
-                } else {
-                    MonthObserverView(namespace: namespace, selectedDay: $selectedDay, onDateChange: {
-                        _ in
-                        withAnimation {
-                            closeMonthView()
-                        }
-                    })
-                        .frame(maxHeight: 280)
-                        .padding(.horizontal, -18)
-                    //MARK: Подумать еще
-                        .transition(.opacity.animation(.easeOut(duration: 0.3)))
+                Group {
+                    if visibleObserver{
+                        WeekObserverView(selectedDay: $selectedDay, onDateChange: onDateChange)
+                            .padding(.horizontal, -18)
+                    } else {
+                        MonthObserverView(selectedDay: $selectedDay, onDateChange: {
+                            changedDate in
+                            withAnimation {
+                                closeMonthView()
+                                
+                            }
+                            return onDateChange(changedDate)
+                        })
+                            .frame(maxHeight: 300)
+                            .padding(.horizontal, -18)
+                        //MARK: Подумать еще
+                            .transition(.opacity.animation(.easeOut(duration: 0.3)))
+                    }
                 }
+                .frame(maxHeight: draggingProgress)
+                .animation(.linear, value: draggingProgress)
                 
-                
-            
                 HStack{
                     ForEach(vm.fetchWeekdays(), id: \.self){
                         day in
@@ -100,11 +103,45 @@ struct CalendarView: View {
                     .fill(Material.thin)
             )
         }
-            
+        .gesture(
+            DragGesture()
+                .onChanged({ offset in
+                        draggingProgress -= offset.translation.height
+                    
+                    
+                    if draggingProgress / (300 - 48) > 0.5 {
+                        withAnimation {
+                            visibleObserver = false
+                        }
+                    } else {
+                        withAnimation {
+                            visibleObserver = true
+                        }
+                    }
+                    
+                    if draggingProgress < 48{
+                        draggingProgress = 48
+                    } else if draggingProgress > 300 {
+                        draggingProgress = 300
+                    }
+                })
+                .onEnded({ offset in
+                    if draggingProgress / (300 - 48) > 0.5 {
+                        withAnimation {
+                            draggingProgress = 300
+                        }
+                    } else {
+                        withAnimation {
+                            draggingProgress = 48
+                        }
+                    }
+                })
+        )
     }
     
     func closeMonthView(){
         visibleObserver = true
+        draggingProgress = 48
     }
 }
 
@@ -112,7 +149,7 @@ struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack{
             Color.black.ignoresSafeArea()
-            CalendarView()
+            CalendarView(onDateChange: {_ in})
         }
     }
 }

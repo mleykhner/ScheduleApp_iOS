@@ -18,6 +18,7 @@ struct GroupSchedule : Codable {
 
 struct WeekSchedule : Codable {
     var daysSchedules: [DaySchedules]
+    var dayNumber: Int
 }
 
 struct DaySchedules : Codable {

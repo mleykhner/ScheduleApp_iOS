@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ClassModel : Codable {
+struct ClassModel : Codable, Hashable {
     var name: String
     var teacher: String?
     var ordinal: Int

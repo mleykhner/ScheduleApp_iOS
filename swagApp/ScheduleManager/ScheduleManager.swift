@@ -24,8 +24,12 @@ class ScheduleManager {
     }
     
     func parse(jsonData: Data) -> ScheduleModel {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(DateFormatter.noTimeDecoder)
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        //decoder.dateDecodingStrategy = .formatted(.)
+        
         do {
             let decodedData = try decoder.decode(ScheduleModel.self,
                                                        from: jsonData)
@@ -44,6 +48,7 @@ extension DateFormatter {
     static let noTimeDecoder: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
+        //formatter.timeStyle = .none
         return formatter
     }()
 }

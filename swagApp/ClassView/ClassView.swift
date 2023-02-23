@@ -14,14 +14,17 @@ struct ClassView: View {
     @StateObject var vm = ClassViewModel()
     @StateObject var tm = ThemeManager.shared
 
-    @State var currentClass: Bool = true
+    @State var currentClass: Bool = false
     @State private var taskOpened: Bool = false
     
     @Environment(\.colorScheme) var colorScheme
     
-    var colorId: UInt
+    //var colorId: UInt
     
     var body: some View {
+        
+        let colorId = vm.getColorIndexForClass(ClassObject.name)
+        
         VStack(spacing: 12) {
             HStack(alignment: .top, spacing: 18) {
                 VStack {
@@ -99,7 +102,7 @@ struct ClassView: View {
                             .font(.custom("Golos Text VF", size: 16))
                         Spacer()
                         Button {
-                            
+                            //tm.setTheme(SWAGTheme())
                         } label: {
                             Label("add", systemImage: "plus")
                                 .font(.custom("Golos Text VF", size: 16))
@@ -114,7 +117,8 @@ struct ClassView: View {
                 .opacity(taskOpened ? 1 : 0)
                 .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
         }
-        .padding(12)
+        .padding([.horizontal, .top], 12)
+        .padding(.bottom, taskOpened ? 12 : 0)
         .frame(maxWidth: .infinity)
         .background(tm.getTheme().getColor(colorId))
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
@@ -151,7 +155,7 @@ struct ClassView_Previews: PreviewProvider {
                 if i == 2 {
                     BreakView()
                 }
-                ClassView(ClassObject: newClass, colorId: i.magnitude)
+                ClassView(ClassObject: newClass/*, colorId: i.magnitude*/)
             }
         }
             

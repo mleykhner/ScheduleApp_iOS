@@ -17,6 +17,7 @@
 		AD784CC529A54ECF006D648E /* testResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = AD784CC429A54ECF006D648E /* testResponse.json */; };
 		AD784CC829A5747D006D648E /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD784CC729A5747D006D648E /* ScheduleModel.swift */; };
 		AD784CCA29A576BD006D648E /* ScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD784CC929A576BD006D648E /* ScheduleManager.swift */; };
+		AD784CCC29A666C1006D648E /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD784CCB29A666C0006D648E /* ScheduleViewModel.swift */; };
 		AD8E4A2529A26162003AB9A1 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8E4A2429A26162003AB9A1 /* Theme.swift */; };
 		AD8E4A2729A267B5003AB9A1 /* SWAGTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8E4A2629A267B5003AB9A1 /* SWAGTheme.swift */; };
 		AD8E4A2929A272F2003AB9A1 /* CalmTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8E4A2829A272F2003AB9A1 /* CalmTheme.swift */; };
@@ -47,6 +48,7 @@
 		AD784CC429A54ECF006D648E /* testResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testResponse.json; sourceTree = "<group>"; };
 		AD784CC729A5747D006D648E /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		AD784CC929A576BD006D648E /* ScheduleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleManager.swift; sourceTree = "<group>"; };
+		AD784CCB29A666C0006D648E /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		AD8E4A2429A26162003AB9A1 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		AD8E4A2629A267B5003AB9A1 /* SWAGTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAGTheme.swift; sourceTree = "<group>"; };
 		AD8E4A2829A272F2003AB9A1 /* CalmTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalmTheme.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				AD784CBA29A4BA8C006D648E /* WeekObserverView */,
 				AD23D4C129A17AB3007D39C7 /* CalendarView */,
 				AD23D4BF29A17A1A007D39C7 /* ScheduleView.swift */,
+				AD784CCB29A666C0006D648E /* ScheduleViewModel.swift */,
 			);
 			path = ScheduleView;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				AD784CC429A54ECF006D648E /* testResponse.json */,
 				AD23D4BE29A179F8007D39C7 /* ScheduleView */,
 				ADA5C1D429A0ED6E005B9261 /* Info.plist */,
+				AD784CC629A5745C006D648E /* ScheduleManager */,
 				ADA5C1CB29A0EB54005B9261 /* Resources */,
 				ADA5C1C629A0EAF2005B9261 /* ClassView */,
 				ADA5C1B829A0E99C005B9261 /* swagAppApp.swift */,
@@ -191,7 +195,6 @@
 		ADA5C1C629A0EAF2005B9261 /* ClassView */ = {
 			isa = PBXGroup;
 			children = (
-				AD784CC629A5745C006D648E /* ScheduleManager */,
 				AD23D4BC29A16DD6007D39C7 /* BreakView.swift */,
 				ADA5C1C929A0EB42005B9261 /* ClassView.swift */,
 				ADA5C1D529A120EF005B9261 /* ClassModel.swift */,
@@ -309,6 +312,7 @@
 				AD784CBE29A4D0CB006D648E /* WeekObserverViewModel.swift in Sources */,
 				ADA5C1BB29A0E99C005B9261 /* ContentView.swift in Sources */,
 				AD8E4A3029A2B462003AB9A1 /* CalendarViewModel.swift in Sources */,
+				AD784CCC29A666C1006D648E /* ScheduleViewModel.swift in Sources */,
 				AD8E4A2D29A2744A003AB9A1 /* ThemeManager.swift in Sources */,
 				AD23D4C029A17A1A007D39C7 /* ScheduleView.swift in Sources */,
 				AD784CCA29A576BD006D648E /* ScheduleManager.swift in Sources */,

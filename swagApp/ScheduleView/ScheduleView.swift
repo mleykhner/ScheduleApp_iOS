@@ -8,10 +8,46 @@
 import SwiftUI
 
 struct ScheduleView: View {
+    
+    @StateObject var vm = ScheduleViewModel()
+    
+    @State var selectedDay = Date()
+    
     var body: some View {
-        ScrollView {
-            Text("Hello")
+        ZStack(alignment: .bottom){
+            ScrollView(.vertical, showsIndicators: false){
+                Text("М3О–225Бк–21")
+                    .font(.custom("Unbounded", size: 32))
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(12)
+                showClasses(vm.getClassesForDate(selectedDay))
+               
+            }
+            
+            CalendarView(onDateChange: { selectedDay = $0 })
         }
+    }
+    
+    func showClasses(_ classes: [ClassModel]) -> some View {
+        var hasSecondClass = false
+        classes.forEach { classObject in
+            if classObject.ordinal == 2 {
+                hasSecondClass = true
+            }
+        }
+        return Group {
+            ForEach(classes, id: \.self) {
+                classObject in
+                if hasSecondClass && classObject.ordinal == 3 {
+                    BreakView()
+                }
+                ClassView(ClassObject: classObject/*, colorId: 1*/)
+                    .transition(.opacity)
+                    //.animation(.easeOut(duration: 0.5))
+            }
+        }
+        
     }
 }
 

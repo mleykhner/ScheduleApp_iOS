@@ -10,19 +10,18 @@ import SwiftUIPager
 
 struct MonthObserverView: View {
     
-    init(namespace: Namespace.ID, selectedDay: Binding<Date>, onDateChange: @escaping (Date) -> Any = {_ in return}){
-        self.namespace = namespace
+    init(selectedDay: Binding<Date>, onDateChange: @escaping (Date) -> Any = {_ in return}){
         self._selectedDay = selectedDay
         self.onDateChange = onDateChange
         _vm = StateObject(wrappedValue: MonthObserverViewModel(selectedDay.wrappedValue))
     }
         
-    let namespace: Namespace.ID
     @Binding var selectedDay: Date
     let onDateChange: (Date) -> Any
     
-    @State var page: Page = Page.withIndex(3)
-    @State var deltaMonths: [Int] = [-3, -2, -1, 0, 1, 2, 3]
+    @State var page: Page = Page.withIndex(1)
+    @State var deltaMonths: [Int] = [-1, 0, 1]
+    @State var disableButtons: Bool = false
     
     @StateObject var vm: MonthObserverViewModel
     @StateObject var tm = ThemeManager.shared
@@ -55,11 +54,8 @@ struct MonthObserverView: View {
                                 })
                                 .foregroundColor(Color(tm.getTheme().foregroundColor))
                                 .frame(maxWidth: .infinity)
-                                .if(deltaMonths[page.index] == month, then: { view in
-                                        view.matchedGeometryEffect(id: day, in: namespace)
-                                }) { $0.transition(.slide) }
                                 
-                        }
+                        }.disabled(disableButtons)
                         
                     }
                     
@@ -69,30 +65,38 @@ struct MonthObserverView: View {
         }
         .singlePagination()
         .pagingPriority(.simultaneous)
+        .onDraggingBegan({
+            disableButtons = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                disableButtons = false
+            })
+        })
+        .onPageWillChange({ (newPage) in
+            withAnimation {
+                //Moving forward or backward a month
+                selectedDay = vm.deltaMonth(delta: (newPage - page.index), day: selectedDay)
+            }
+        })
         .onPageChanged({ newPage in
-            if newPage >= deltaMonths.count - 2 {
-                (1..<4).forEach { _ in
+            if newPage >= deltaMonths.count - 1 {
                     deltaMonths.append((deltaMonths.last ?? 0) + 1)
                     deltaMonths.removeFirst()
                     page.index -= 1
-                }
-            } else if newPage <= 1 {
-                (1..<4).forEach { _ in
-                    deltaMonths.insert((deltaMonths.last ?? 0) + 1, at: 0)
+            } else if newPage <= 0 {
+                    deltaMonths.insert((deltaMonths.first ?? 0) - 1, at: 0)
                     deltaMonths.removeLast()
                     page.index += 1
-                }
             }
         })
+        
     }
 }
 
 struct MonthObserverView_Previews: PreviewProvider {
     
     @State static var selectedDay: Date = Date()
-    @Namespace static var namespace
     
     static var previews: some View {
-        MonthObserverView(namespace: namespace, selectedDay: $selectedDay)
+        MonthObserverView(selectedDay: $selectedDay)
     }
 }

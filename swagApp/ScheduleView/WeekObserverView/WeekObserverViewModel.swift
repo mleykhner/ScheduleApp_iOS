@@ -70,4 +70,9 @@ extension Date {
         let calendar = Calendar.current
         return calendar.isDate(self, inSameDayAs: date)
     }
+    
+    func isSameMonth (_ date: Date) -> Bool{
+        let calendar = Calendar.current
+        return calendar.dateComponents([.month], from: date) == calendar.dateComponents([.month], from: self)
+    }
 }

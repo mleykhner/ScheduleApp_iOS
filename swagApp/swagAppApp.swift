@@ -10,16 +10,16 @@ import SwiftUI
 @main
 struct swagAppApp: App {
     
-    init(){
-        demo = test.parse(jsonData: test.readLocalFile(forName: "testResponse")!)
-    }
-    
-    let test = ScheduleManager()
-    var demo: ScheduleModel
+//    init(){
+//        demo = test.parse(jsonData: test.readLocalFile(forName: "testResponse")!)
+//    }
+//
+//    let test = ScheduleManager()
+//    var demo: ScheduleModel
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ScheduleView()
         }
     }
 }
