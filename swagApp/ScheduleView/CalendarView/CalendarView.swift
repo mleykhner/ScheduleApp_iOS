@@ -10,16 +10,11 @@ import SwiftUIPager
 
 struct CalendarView: View {
     
-    let onDateChange: (Date) -> Any
-    
+    //let onDateChange: (Date) -> Any
     @StateObject var vm = CalendarViewModel()
     @StateObject var tm = ThemeManager.shared
     
-    @State var page: Page = Page.withIndex(3)
-    @State var deltaWeeks: [Int] = [-3, -2, -1, 0, 1, 2, 3]
-    
-    @State var selectedDay: Date = Date()
-    
+    @Binding var selectedDay: Date
     @State var draggingProgress: CGFloat = 48
     @State var visibleObserver: Bool = true
     
@@ -65,16 +60,12 @@ struct CalendarView: View {
                 .foregroundColor(Color(tm.getTheme().foregroundColor))
                 Group {
                     if visibleObserver{
-                        WeekObserverView(selectedDay: $selectedDay, onDateChange: onDateChange)
+                        WeekObserverView($selectedDay)
                             .padding(.horizontal, -18)
                     } else {
                         MonthObserverView(selectedDay: $selectedDay, onDateChange: {
-                            changedDate in
-                            withAnimation {
+                            _ in
                                 closeMonthView()
-                                
-                            }
-                            return onDateChange(changedDate)
                         })
                             .frame(maxHeight: 300)
                             .padding(.horizontal, -18)
@@ -140,16 +131,19 @@ struct CalendarView: View {
     }
     
     func closeMonthView(){
-        visibleObserver = true
-        draggingProgress = 48
+        withAnimation {
+            visibleObserver = true
+            draggingProgress = 48
+        }
     }
 }
 
 struct CalendarView_Previews: PreviewProvider {
+    @State static var selectedDay = Date()
     static var previews: some View {
         ZStack{
             Color.black.ignoresSafeArea()
-            CalendarView(onDateChange: {_ in})
+            CalendarView(selectedDay: $selectedDay)
         }
     }
 }

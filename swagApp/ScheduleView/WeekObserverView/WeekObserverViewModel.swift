@@ -7,20 +7,9 @@
 
 import Foundation
 
-class WeekObserverViewModel : ObservableObject {
-    
-    init(_ originDate: Date){
-        self.originDate = originDate
-    }
-    
-    @Published var originDate: Date
-    
-    func updateOrigin(_ date: Date){
-        originDate = date
-    }
-    
-    func deltaWeek(delta: Int, day: Date? = nil)->Date{
-        let day = day ?? originDate
+class WeekObserverViewModel {
+
+    func deltaWeek(delta: Int, day: Date)->Date{
         let calendar = Calendar.current
         return calendar.date(byAdding: .weekOfYear, value: delta, to: day)!
     }
@@ -73,6 +62,6 @@ extension Date {
     
     func isSameMonth (_ date: Date) -> Bool{
         let calendar = Calendar.current
-        return calendar.dateComponents([.month], from: date) == calendar.dateComponents([.month], from: self)
+        return calendar.isDate(date, equalTo: self, toGranularity: .month)
     }
 }

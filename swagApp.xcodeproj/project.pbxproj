@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD17136129A7B6FC00BD9FA2 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD17136029A7B6FC00BD9FA2 /* TabBarView.swift */; };
+		AD17136329A7C49600BD9FA2 /* MainFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD17136229A7C49600BD9FA2 /* MainFlowView.swift */; };
 		AD23D4BD29A16DD6007D39C7 /* BreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD23D4BC29A16DD6007D39C7 /* BreakView.swift */; };
 		AD23D4C029A17A1A007D39C7 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD23D4BF29A17A1A007D39C7 /* ScheduleView.swift */; };
 		AD23D4C329A17ACD007D39C7 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD23D4C229A17ACD007D39C7 /* CalendarView.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD17136029A7B6FC00BD9FA2 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		AD17136229A7C49600BD9FA2 /* MainFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowView.swift; sourceTree = "<group>"; };
 		AD23D4BC29A16DD6007D39C7 /* BreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakView.swift; sourceTree = "<group>"; };
 		AD23D4BF29A17A1A007D39C7 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		AD23D4C229A17ACD007D39C7 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -82,6 +86,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD17135E29A7B6AA00BD9FA2 /* MainFlowView */ = {
+			isa = PBXGroup;
+			children = (
+				AD17135F29A7B6B600BD9FA2 /* TabBarView */,
+				AD17136229A7C49600BD9FA2 /* MainFlowView.swift */,
+			);
+			path = MainFlowView;
+			sourceTree = "<group>";
+		};
+		AD17135F29A7B6B600BD9FA2 /* TabBarView */ = {
+			isa = PBXGroup;
+			children = (
+				AD17136029A7B6FC00BD9FA2 /* TabBarView.swift */,
+			);
+			path = TabBarView;
+			sourceTree = "<group>";
+		};
 		AD23D4BE29A179F8007D39C7 /* ScheduleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +191,7 @@
 		ADA5C1B729A0E99C005B9261 /* swagApp */ = {
 			isa = PBXGroup;
 			children = (
+				AD17135E29A7B6AA00BD9FA2 /* MainFlowView */,
 				AD784CC429A54ECF006D648E /* testResponse.json */,
 				AD23D4BE29A179F8007D39C7 /* ScheduleView */,
 				ADA5C1D429A0ED6E005B9261 /* Info.plist */,
@@ -305,6 +327,7 @@
 				AD8E4A2529A26162003AB9A1 /* Theme.swift in Sources */,
 				AD23D4BD29A16DD6007D39C7 /* BreakView.swift in Sources */,
 				ADA5C1DF29A1289C005B9261 /* ClassViewModel.swift in Sources */,
+				AD17136329A7C49600BD9FA2 /* MainFlowView.swift in Sources */,
 				AD8E4A2B29A27408003AB9A1 /* MinimalTheme.swift in Sources */,
 				AD784CBC29A4BB17006D648E /* WeekObserverView.swift in Sources */,
 				AD784CC129A54110006D648E /* MonthObserverView.swift in Sources */,
@@ -314,6 +337,7 @@
 				AD8E4A3029A2B462003AB9A1 /* CalendarViewModel.swift in Sources */,
 				AD784CCC29A666C1006D648E /* ScheduleViewModel.swift in Sources */,
 				AD8E4A2D29A2744A003AB9A1 /* ThemeManager.swift in Sources */,
+				AD17136129A7B6FC00BD9FA2 /* TabBarView.swift in Sources */,
 				AD23D4C029A17A1A007D39C7 /* ScheduleView.swift in Sources */,
 				AD784CCA29A576BD006D648E /* ScheduleManager.swift in Sources */,
 				ADA5C1B929A0E99C005B9261 /* swagAppApp.swift in Sources */,

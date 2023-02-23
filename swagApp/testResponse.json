@@ -24,7 +24,7 @@
                 "location": "3-330"
               }
             ],
-            "hashSum": "D9D7E2DE0841FD722E73605DB1B582BF"
+            "hashSum": "E28DCF980D6C9A3D6BCB5542C029475C"
           },
           {
             "dates": [
@@ -63,7 +63,7 @@
                 "location": "3-269"
               }
             ],
-            "hashSum": "228ED1205259D3E72BD5C09686AD0667"
+            "hashSum": "88F45FC8E30EBF00D7C8A43E94923FF8"
           },
           {
             "dates": [
@@ -72,7 +72,8 @@
               "27.03.2023",
               "10.04.2023",
               "24.04.2023",
-              "22.05.2023"
+              "22.05.2023",
+              "05.06.2023"
             ],
             "classes": [
               {
@@ -97,7 +98,7 @@
                 "location": "3-330"
               }
             ],
-            "hashSum": "15C027BD273810C5B61FE807B8677139"
+            "hashSum": "3FCAB0A72E7ED1D7939D09B7CCAFCE46"
           },
           {
             "dates": [
@@ -123,19 +124,19 @@
               {
                 "ordinal": 3,
                 "name": "Электротехника и электроника",
-                "teacher": null,
+                "teacher": "Томилин Максим Михайлович/Сулаков Андрей Сергеевич",
                 "type": "laboratory",
-                "location": "Томилин Максим Михайлович"
+                "location": "3-269"
               },
               {
                 "ordinal": 4,
                 "name": "Электротехника и электроника",
-                "teacher": null,
+                "teacher": "Томилин Максим Михайлович/Сулаков Андрей Сергеевич",
                 "type": "laboratory",
-                "location": "Томилин Максим Михайлович"
+                "location": "3-269"
               }
             ],
-            "hashSum": "E7572836F4A029C8DA1E942820F72A73"
+            "hashSum": "7B94D36EF4213055D371AB39FC63E0A7"
           }
         ],
         "dayNumber": 1
@@ -175,7 +176,7 @@
                 "location": "3-435"
               }
             ],
-            "hashSum": "B7BBA12D8CB84C583967A37DFA3A311B"
+            "hashSum": "7F659781695F6982782CBAEDBA57D3A4"
           },
           {
             "dates": [
@@ -204,7 +205,29 @@
                 "location": "3-429"
               }
             ],
-            "hashSum": "FE07E2830DE2AD5A1BB5746CA433C6E1"
+            "hashSum": "8DFA8F6B190C88C3880ED14A7067553B"
+          },
+          {
+            "dates": [
+              "06.06.2023"
+            ],
+            "classes": [
+              {
+                "ordinal": 3,
+                "name": "Экономическая теория",
+                "teacher": "Тихонов Геннадий Витальевич",
+                "type": "lecture",
+                "location": "3-429"
+              },
+              {
+                "ordinal": 4,
+                "name": "Основы психологии",
+                "teacher": "Гриб Елена Витальевна",
+                "type": "lecture",
+                "location": "3-435"
+              }
+            ],
+            "hashSum": "65847277F7A82A4D441D2121C7FA54AF"
           }
         ],
         "dayNumber": 2
@@ -226,7 +249,8 @@
               "10.05.2023",
               "17.05.2023",
               "24.05.2023",
-              "31.05.2023"
+              "31.05.2023",
+              "07.06.2023"
             ],
             "classes": [
               {
@@ -258,7 +282,7 @@
                 "location": "3-423"
               }
             ],
-            "hashSum": "79FC1B530CBE27283323DA277FFAEEC4"
+            "hashSum": "80BB86015956842BDB6048D45AE45FC8"
           },
           {
             "dates": [
@@ -287,7 +311,7 @@
                 "location": "--каф."
               }
             ],
-            "hashSum": "AA4F24FDD17CFA9B2EA9B35EC38DD5FC"
+            "hashSum": "5B1A3B814C7FBD11EF8E54BFB6751EAF"
           }
         ],
         "dayNumber": 3
@@ -343,7 +367,7 @@
                 "location": "--каф."
               }
             ],
-            "hashSum": "B9881F588CE9238520DF6A94C2DB0A93"
+            "hashSum": "24AF59DBBE14D4EDFE4FEB8917152C02"
           }
         ],
         "dayNumber": 4
@@ -377,7 +401,7 @@
                 "location": "2-314(2В)"
               }
             ],
-            "hashSum": "1A968902280079FE213EBE507CB3E222"
+            "hashSum": "F7982F6A69C912EEAB06C40F30E7D4D7"
           },
           {
             "dates": [
@@ -420,7 +444,7 @@
                 "location": "3-330"
               }
             ],
-            "hashSum": "BF701CC5BE977BC06BC7DB6FE6A3B8FE"
+            "hashSum": "B61E7D439F3AC40F00F9D6155029BAF3"
           },
           {
             "dates": [
@@ -462,7 +486,7 @@
                 "location": "3-413"
               }
             ],
-            "hashSum": "27D8AACB92175B0B262072156538318C"
+            "hashSum": "33F07A1480725BB98547843D42358545"
           }
         ],
         "dayNumber": 5
@@ -497,7 +521,7 @@
                 "location": "3-Зал \"А\""
               }
             ],
-            "hashSum": "157939C4A81AEFBA63F5D602E5023344"
+            "hashSum": "8BDC09F4BF4AD0FD524FCCC154F08E86"
           },
           {
             "dates": [
@@ -510,19 +534,19 @@
               {
                 "ordinal": 1,
                 "name": "Объектно-ориентированное программирование",
-                "teacher": null,
+                "teacher": "Новиков Павел Владимирович/Ивашенцев Иван Владимирович",
                 "type": "laboratory",
-                "location": "Новиков Павел Владимирович"
+                "location": "3-444"
               },
               {
                 "ordinal": 2,
                 "name": "Объектно-ориентированное программирование",
-                "teacher": null,
+                "teacher": "Новиков Павел Владимирович/Ивашенцев Иван Владимирович",
                 "type": "laboratory",
-                "location": "Новиков Павел Владимирович"
+                "location": "3-444"
               }
             ],
-            "hashSum": "F8ACE5746B614FD2732364260FF09B0B"
+            "hashSum": "38A6E449C9A52C6FDB2639BB3CD61581"
           }
         ],
         "dayNumber": 6

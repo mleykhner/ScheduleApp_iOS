@@ -19,7 +19,7 @@ struct swagAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ScheduleView()
+            MainFlowView()
         }
     }
 }

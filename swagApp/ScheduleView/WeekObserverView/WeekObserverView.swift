@@ -10,20 +10,19 @@ import SwiftUIPager
 
 struct WeekObserverView: View {
     
-    init(selectedDay: Binding<Date>, onDateChange: @escaping (Date) -> Any = {_ in return}){
-        self._selectedDay = selectedDay
-        self.onDateChange = onDateChange
-        _vm = StateObject(wrappedValue: WeekObserverViewModel(selectedDay.wrappedValue))
+    init(_ day: Binding<Date>){
+        _selectedDay = day
+        _originDate = State(initialValue: day.wrappedValue)
     }
 
     @Binding var selectedDay: Date
-    let onDateChange: (Date) -> Any
+    @State var originDate: Date
     
     @State var page: Page = Page.withIndex(3)
     @State var deltaWeeks: [Int] = [-3, -2, -1, 0, 1, 2, 3]
     @State var disableButtons: Bool = false
     
-    @StateObject var vm: WeekObserverViewModel
+    let vm =  WeekObserverViewModel()
     @StateObject var tm = ThemeManager.shared
     
     @State var previousPageIndex:Int = 3
@@ -31,12 +30,11 @@ struct WeekObserverView: View {
     var body: some View {
         Pager(page: page, data: deltaWeeks, id: \.self) { deltaWeek in
             HStack{
-                ForEach(vm.fetchWeek(vm.deltaWeek(delta: deltaWeek)), id: \.self){ day in
+                ForEach(vm.fetchWeek(vm.deltaWeek(delta: deltaWeek, day: originDate)), id: \.self){ day in
                     Button {
                         withAnimation(.easeOut) {
                             selectedDay = day
                         }
-                        _ = onDateChange(day)
                     } label: {
                         Text(day.extractDate("dd"))
                             .font(.custom("Unbounded", size: 20))
@@ -66,9 +64,9 @@ struct WeekObserverView: View {
         .onPageWillChange({ (newPage) in
             withAnimation {
                 //Moving forward or backward a week
+                //!!!
                 selectedDay = vm.deltaWeek(delta: (newPage - page.index), day: selectedDay)
             }
-            _ = onDateChange(selectedDay)
         })
         .onPageChanged({ newPage in
             if newPage >= deltaWeeks.count - 2 {
@@ -93,8 +91,9 @@ struct WeekObserverView: View {
 
 struct WeekObserverView_Previews: PreviewProvider {
     @State static var selectedDay: Date = Date()
+    static var originDate: Date = Date()
     static var previews: some View {
-        WeekObserverView(selectedDay: $selectedDay)
+        WeekObserverView($selectedDay)
     }
 }
 

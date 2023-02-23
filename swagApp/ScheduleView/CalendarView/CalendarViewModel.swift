@@ -7,12 +7,13 @@
 
 import Foundation
 import SwiftUIPager
+import SwiftUI
 
 class CalendarViewModel : ObservableObject {
     
     func getMonthSymbol(_ date: Date) -> String{
             let calendar = Calendar.current
-            return calendar.standaloneMonthSymbols[calendar.component(.month, from: date) - 1]
+        return calendar.standaloneMonthSymbols[calendar.component(.month, from: date) - 1]
         }
     
     

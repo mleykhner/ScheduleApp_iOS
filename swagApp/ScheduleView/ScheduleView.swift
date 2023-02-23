@@ -22,11 +22,13 @@ struct ScheduleView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(12)
                 showClasses(vm.getClassesForDate(selectedDay))
-               
             }
             
-            CalendarView(onDateChange: { selectedDay = $0 })
+            
+            CalendarView(selectedDay: $selectedDay)
+                .padding(.bottom, 59)
         }
+        
     }
     
     func showClasses(_ classes: [ClassModel]) -> some View {
@@ -43,9 +45,9 @@ struct ScheduleView: View {
                     BreakView()
                 }
                 ClassView(ClassObject: classObject/*, colorId: 1*/)
-                    .transition(.opacity)
-                    //.animation(.easeOut(duration: 0.5))
             }
+            .transition(.slide)
+            .animation(.easeOut(duration: 0.1))
         }
         
     }
