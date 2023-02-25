@@ -16,7 +16,7 @@
 		AD784CBE29A4D0CB006D648E /* WeekObserverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD784CBD29A4D0CB006D648E /* WeekObserverViewModel.swift */; };
 		AD784CC129A54110006D648E /* MonthObserverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD784CC029A54110006D648E /* MonthObserverView.swift */; };
 		AD784CC329A54CDD006D648E /* MonthObserverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD784CC229A54CDD006D648E /* MonthObserverViewModel.swift */; };
-		AD784CC529A54ECF006D648E /* testResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = AD784CC429A54ECF006D648E /* testResponse.json */; };
+		AD784CC529A54ECF006D648E /* М3О-225Бк-21.json in Resources */ = {isa = PBXBuildFile; fileRef = AD784CC429A54ECF006D648E /* М3О-225Бк-21.json */; };
 		AD784CC829A5747D006D648E /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD784CC729A5747D006D648E /* ScheduleModel.swift */; };
 		AD784CCA29A576BD006D648E /* ScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD784CC929A576BD006D648E /* ScheduleManager.swift */; };
 		AD784CCC29A666C1006D648E /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD784CCB29A666C0006D648E /* ScheduleViewModel.swift */; };
@@ -37,6 +37,11 @@
 		ADA5C1D629A120EF005B9261 /* ClassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA5C1D529A120EF005B9261 /* ClassModel.swift */; };
 		ADA5C1DA29A1266F005B9261 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADA5C1DC29A1266F005B9261 /* Localizable.strings */; };
 		ADA5C1DF29A1289C005B9261 /* ClassViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA5C1DE29A1289C005B9261 /* ClassViewModel.swift */; };
+		ADDD58D929A8C78A0041A8D0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD58D829A8C78A0041A8D0 /* SettingsView.swift */; };
+		ADDD58DC29A8D14D0041A8D0 /* GroupTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD58DB29A8D14D0041A8D0 /* GroupTextFieldView.swift */; };
+		ADDD58E029A8FF280041A8D0 /* М3В-201Мк-21.json in Resources */ = {isa = PBXBuildFile; fileRef = ADDD58DD29A8FF280041A8D0 /* М3В-201Мк-21.json */; };
+		ADDD58E129A8FF280041A8D0 /* М3О-135Б-22.json in Resources */ = {isa = PBXBuildFile; fileRef = ADDD58DE29A8FF280041A8D0 /* М3О-135Б-22.json */; };
+		ADDD58E229A8FF280041A8D0 /* М3О-205С-21.json in Resources */ = {isa = PBXBuildFile; fileRef = ADDD58DF29A8FF280041A8D0 /* М3О-205С-21.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,7 +54,7 @@
 		AD784CBD29A4D0CB006D648E /* WeekObserverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekObserverViewModel.swift; sourceTree = "<group>"; };
 		AD784CC029A54110006D648E /* MonthObserverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthObserverView.swift; sourceTree = "<group>"; };
 		AD784CC229A54CDD006D648E /* MonthObserverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthObserverViewModel.swift; sourceTree = "<group>"; };
-		AD784CC429A54ECF006D648E /* testResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testResponse.json; sourceTree = "<group>"; };
+		AD784CC429A54ECF006D648E /* М3О-225Бк-21.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "М3О-225Бк-21.json"; sourceTree = "<group>"; };
 		AD784CC729A5747D006D648E /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		AD784CC929A576BD006D648E /* ScheduleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleManager.swift; sourceTree = "<group>"; };
 		AD784CCB29A666C0006D648E /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
@@ -72,6 +77,11 @@
 		ADA5C1DB29A1266F005B9261 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADA5C1DD29A12671005B9261 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADA5C1DE29A1289C005B9261 /* ClassViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassViewModel.swift; sourceTree = "<group>"; };
+		ADDD58D829A8C78A0041A8D0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		ADDD58DB29A8D14D0041A8D0 /* GroupTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTextFieldView.swift; sourceTree = "<group>"; };
+		ADDD58DD29A8FF280041A8D0 /* М3В-201Мк-21.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "М3В-201Мк-21.json"; sourceTree = "<group>"; };
+		ADDD58DE29A8FF280041A8D0 /* М3О-135Б-22.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "М3О-135Б-22.json"; sourceTree = "<group>"; };
+		ADDD58DF29A8FF280041A8D0 /* М3О-205С-21.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "М3О-205С-21.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,8 +201,12 @@
 		ADA5C1B729A0E99C005B9261 /* swagApp */ = {
 			isa = PBXGroup;
 			children = (
+				ADDD58D729A8C76C0041A8D0 /* SettingsView */,
 				AD17135E29A7B6AA00BD9FA2 /* MainFlowView */,
-				AD784CC429A54ECF006D648E /* testResponse.json */,
+				AD784CC429A54ECF006D648E /* М3О-225Бк-21.json */,
+				ADDD58DE29A8FF280041A8D0 /* М3О-135Б-22.json */,
+				ADDD58DF29A8FF280041A8D0 /* М3О-205С-21.json */,
+				ADDD58DD29A8FF280041A8D0 /* М3В-201Мк-21.json */,
 				AD23D4BE29A179F8007D39C7 /* ScheduleView */,
 				ADA5C1D429A0ED6E005B9261 /* Info.plist */,
 				AD784CC629A5745C006D648E /* ScheduleManager */,
@@ -241,6 +255,23 @@
 				ADA5C1DC29A1266F005B9261 /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		ADDD58D729A8C76C0041A8D0 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				ADDD58DA29A8D1340041A8D0 /* GroupTextField */,
+				ADDD58D829A8C78A0041A8D0 /* SettingsView.swift */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		ADDD58DA29A8D1340041A8D0 /* GroupTextField */ = {
+			isa = PBXGroup;
+			children = (
+				ADDD58DB29A8D14D0041A8D0 /* GroupTextFieldView.swift */,
+			);
+			path = GroupTextField;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,12 +339,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADDD58E029A8FF280041A8D0 /* М3В-201Мк-21.json in Resources */,
 				ADA5C1DA29A1266F005B9261 /* Localizable.strings in Resources */,
-				AD784CC529A54ECF006D648E /* testResponse.json in Resources */,
+				AD784CC529A54ECF006D648E /* М3О-225Бк-21.json in Resources */,
 				ADA5C1CD29A0EBFA005B9261 /* Unbounded.ttf in Resources */,
 				ADA5C1C029A0E99E005B9261 /* Preview Assets.xcassets in Resources */,
+				ADDD58E129A8FF280041A8D0 /* М3О-135Б-22.json in Resources */,
 				ADA5C1CF29A0EC43005B9261 /* Golos.ttf in Resources */,
 				ADA5C1BD29A0E99E005B9261 /* Assets.xcassets in Resources */,
+				ADDD58E229A8FF280041A8D0 /* М3О-205С-21.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +367,7 @@
 				AD784CC129A54110006D648E /* MonthObserverView.swift in Sources */,
 				AD23D4C329A17ACD007D39C7 /* CalendarView.swift in Sources */,
 				AD784CBE29A4D0CB006D648E /* WeekObserverViewModel.swift in Sources */,
+				ADDD58D929A8C78A0041A8D0 /* SettingsView.swift in Sources */,
 				ADA5C1BB29A0E99C005B9261 /* ContentView.swift in Sources */,
 				AD8E4A3029A2B462003AB9A1 /* CalendarViewModel.swift in Sources */,
 				AD784CCC29A666C1006D648E /* ScheduleViewModel.swift in Sources */,
@@ -342,6 +377,7 @@
 				AD784CCA29A576BD006D648E /* ScheduleManager.swift in Sources */,
 				ADA5C1B929A0E99C005B9261 /* swagAppApp.swift in Sources */,
 				ADA5C1D629A120EF005B9261 /* ClassModel.swift in Sources */,
+				ADDD58DC29A8D14D0041A8D0 /* GroupTextFieldView.swift in Sources */,
 				AD8E4A2929A272F2003AB9A1 /* CalmTheme.swift in Sources */,
 				AD784CC329A54CDD006D648E /* MonthObserverViewModel.swift in Sources */,
 				ADA5C1CA29A0EB42005B9261 /* ClassView.swift in Sources */,

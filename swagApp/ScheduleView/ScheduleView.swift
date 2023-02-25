@@ -10,17 +10,38 @@ import SwiftUI
 struct ScheduleView: View {
     
     @StateObject var vm = ScheduleViewModel()
+    @StateObject var tm = ThemeManager.shared
     
-    @State var selectedDay = Date()
+    @State var selectedDay:Date = Date()
+    @State var showSettings: Bool = false
     
     var body: some View {
         ZStack(alignment: .bottom){
             ScrollView(.vertical, showsIndicators: false){
-                Text("М3О–225Бк–21")
-                    .font(.custom("Unbounded", size: 32))
-                    .fontWeight(.bold)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(12)
+                HStack(alignment: .center) {
+                    Text(vm.schedule?.groupName.longDash() ?? "Группа не установлена")
+                        .font(.custom("Unbounded", size: 32))
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Button {
+                        showSettings.toggle()
+                    } label: {
+                        Image(systemName: "gearshape")
+                            .font(.system(size: 24))
+                    }
+                    .popover(isPresented: $showSettings) {
+                        SettingsView()
+                    }
+                    .onChange(of: showSettings) { _ in
+                        if let newGroup = UserDefaults().string(forKey: "preferredGroup") {
+                            vm.loadScheduleForGroup(newGroup)
+                        }
+                        
+                    }
+                }
+                .foregroundColor(Color(tm.getTheme().foregroundColor))
+                .padding(12)
                 showClasses(vm.getClassesForDate(selectedDay))
             }
             
@@ -46,8 +67,8 @@ struct ScheduleView: View {
                 }
                 ClassView(ClassObject: classObject/*, colorId: 1*/)
             }
-            .transition(.slide)
-            .animation(.easeOut(duration: 0.1))
+//            .transition(.slide)
+//            .animation(.easeOut(duration: 0.1))
         }
         
     }

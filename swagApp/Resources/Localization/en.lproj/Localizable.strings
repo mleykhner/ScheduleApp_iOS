@@ -13,8 +13,15 @@
 "noTask" = "No task";
 "now" = "Now";
 "add" = "Add";
+"addNew" = "Add new";
+"group" = "Group";
+"myGroup" = "My group";
+"friendsGroups" = "Friends groups";
+"edit" = "Edit";
+"settings" = "Settings";
 "reportABug" = "Report a bug";
 "changeGroup" = "Change group";
 "news" = "News";
 "schedule" = "Schedule";
 "tasks" = "Tasks";
+"friendsGroupsDescription" = "You can quickly switch to the schedules for these groups by long clicking on the \"Schedule\" button. You will not be able to add tasks for them, as well as view them.";

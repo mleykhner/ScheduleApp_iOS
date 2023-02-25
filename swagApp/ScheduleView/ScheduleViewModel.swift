@@ -10,34 +10,35 @@ import Foundation
 class ScheduleViewModel : ObservableObject {
     
     init(){
-        schedule = sm.parse(jsonData: sm.readLocalFile(forName: "testResponse")!)
+        if let preferredGroup = UserDefaults().string(forKey: "preferredGroup") {
+            schedule = sm.parse(jsonData: sm.readLocalFile(forName: preferredGroup)!)
+        }
     }
     
     let sm = ScheduleManager()
-    var schedule: ScheduleModel
+    var schedule: ScheduleModel?
+    
+    func loadScheduleForGroup(_ group: String){
+        schedule = sm.parse(jsonData: sm.readLocalFile(forName: group)!)
+        objectWillChange.send()
+    }
     
     func getClassesForDate(_ date: Date) -> [ClassModel] {
-        let calendar = Calendar.current
-        let dayNumber = calendar.component(.weekday, from: date) - 1
-        for weekday in schedule.schedule.week {
-            if weekday.dayNumber == dayNumber {
-                for weekdaySchedule in weekday.daysSchedules {
-                    for scheduleDate in weekdaySchedule.dates{
-                        if scheduleDate.isSameAs(date){
-                            return weekdaySchedule.classes
+        if let schedule = schedule {
+            let calendar = Calendar.current
+            let dayNumber = calendar.component(.weekday, from: date) - 1
+            for weekday in schedule.schedule.week {
+                if weekday.dayNumber == dayNumber {
+                    for weekdaySchedule in weekday.daysSchedules {
+                        for scheduleDate in weekdaySchedule.dates{
+                            if scheduleDate.isSameAs(date){
+                                return weekdaySchedule.classes
+                            }
                         }
                     }
                 }
             }
         }
-//        let schedulesForWeekday = schedule.schedule.week[dayNumber]
-//        for weekdaySchedule in schedulesForWeekday.daysSchedules {
-//            for scheduleDate in weekdaySchedule.dates{
-//                if scheduleDate.isSameAs(date){
-//                    return weekdaySchedule.classes
-//                }
-//            }
-//        }
         return []
     }
     

@@ -23,7 +23,7 @@ struct MainFlowView: View {
                 Spacer()
                     .frame(maxHeight: .infinity)
             }
-            TabBarView(activeTab: $activeTab)
+            TabBarView($activeTab)
                 
         }
     }

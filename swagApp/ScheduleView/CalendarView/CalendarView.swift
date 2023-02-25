@@ -18,7 +18,6 @@ struct CalendarView: View {
     @State var draggingProgress: CGFloat = 48
     @State var visibleObserver: Bool = true
     
-    
     var body: some View {
         VStack(spacing: 6){
             Capsule()
@@ -32,7 +31,16 @@ struct CalendarView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer()
                     Menu {
-                        
+                        if !selectedDay.isSameAs(Date()){
+                            Button {
+                                selectedDay = Date()
+                            } label: {
+                                HStack{
+                                    Text("Вернуться к сегодня")
+                                    Image(systemName: "calendar.circle")
+                                }
+                            }
+                        }
                         Button {
                             //Изменить группу
                             

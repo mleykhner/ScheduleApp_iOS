@@ -27,11 +27,14 @@ struct WeekObserverView: View {
     
     @State var previousPageIndex:Int = 3
     
+    let generator = UISelectionFeedbackGenerator()
+    
     var body: some View {
         Pager(page: page, data: deltaWeeks, id: \.self) { deltaWeek in
             HStack{
                 ForEach(vm.fetchWeek(vm.deltaWeek(delta: deltaWeek, day: originDate)), id: \.self){ day in
                     Button {
+                        generator.selectionChanged()
                         withAnimation(.easeOut) {
                             selectedDay = day
                         }
@@ -65,6 +68,7 @@ struct WeekObserverView: View {
             withAnimation {
                 //Moving forward or backward a week
                 //!!!
+                generator.selectionChanged()
                 selectedDay = vm.deltaWeek(delta: (newPage - page.index), day: selectedDay)
             }
         })

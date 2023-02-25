@@ -26,6 +26,8 @@ struct MonthObserverView: View {
     @StateObject var vm: MonthObserverViewModel
     @StateObject var tm = ThemeManager.shared
     
+    private let generator = UISelectionFeedbackGenerator()
+    
     let columns = Array(repeating: GridItem(.flexible()), count: 7)
     
     var body: some View {
@@ -38,6 +40,7 @@ struct MonthObserverView: View {
                         Spacer()
                     } else {
                         Button {
+                            generator.selectionChanged()
                             withAnimation(.easeOut) {
                                 selectedDay = day
                             }
@@ -78,6 +81,7 @@ struct MonthObserverView: View {
             }
         })
         .onPageChanged({ newPage in
+            generator.selectionChanged()
             if newPage >= deltaMonths.count - 1 {
                     deltaMonths.append((deltaMonths.last ?? 0) + 1)
                     deltaMonths.removeFirst()

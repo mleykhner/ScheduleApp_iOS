@@ -9,8 +9,14 @@ import SwiftUI
 
 struct TabBarView: View {
     
+    init(_ activeTab: Binding<Tab>){
+        _activeTab = activeTab
+    }
+    
     @Binding var activeTab: Tab
     @StateObject var tm = ThemeManager.shared
+    
+    private let generator = UISelectionFeedbackGenerator()
     
     var body: some View {
         VStack(spacing: 4) {
@@ -26,6 +32,7 @@ struct TabBarView: View {
                 }
                 .foregroundColor(Color(tm.getTheme().foregroundColor).opacity(activeTab == .news ? 1 : 0.4))
                 .onTapGesture {
+                    generator.selectionChanged()
                     withAnimation(.easeOut(duration: 0.05)) {
                         activeTab = .news
                     }
@@ -40,12 +47,17 @@ struct TabBarView: View {
                         .fontWeight(activeTab == .schedule ? .semibold : .regular)
                 }
                 .onTapGesture {
+                    generator.selectionChanged()
                     withAnimation(.easeOut(duration: 0.05)) {
                         activeTab = .schedule
                     }
                 }
+                .onLongPressGesture {
+                    
+                }
                 .foregroundColor(Color(tm.getTheme().foregroundColor).opacity(activeTab == .schedule ? 1 : 0.4))
                 .frame(maxWidth: .infinity)
+                
                 
                 VStack(spacing: 4){
                     Image(systemName: "book")
@@ -56,6 +68,7 @@ struct TabBarView: View {
                         
                 }
                 .onTapGesture {
+                    generator.selectionChanged()
                     withAnimation(.easeOut(duration: 0.05)) {
                         activeTab = .tasks
                     }
@@ -68,11 +81,12 @@ struct TabBarView: View {
         }
         .background(.thinMaterial)
     }
+    
 }
 
 struct TabBarView_Previews: PreviewProvider {
     @State static var page: Tab = .schedule
     static var previews: some View {
-        TabBarView(activeTab: $page)
+        TabBarView($page)
     }
 }
