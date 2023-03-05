@@ -44,8 +44,8 @@
             filePath = "swagApp/ScheduleView/ScheduleViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "getClassesForDate(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -85,17 +85,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F1D8B171-8361-4606-88D8-326A2771C9BC"
-            shouldBeEnabled = "Yes"
+            uuid = "3AC2A22F-D4F2-4DE0-B471-1942A20A918E"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "swagApp/SettingsView/SettingsView.swift"
+            filePath = "swagApp/ScheduleManager/ScheduleManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "loadData(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3AC2A22F-D4F2-4DE0-B471-1942A20A918E - 20382aa062d68413"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "swagApp.ScheduleManager.loadData(Swift.String) -&gt; ()"
+                  moduleName = "swagApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mleykhner/Documents/Threeply_2.0/swagApp/swagApp/ScheduleManager/ScheduleManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "396">
+               </Location>
+               <Location
+                  uuid = "3AC2A22F-D4F2-4DE0-B471-1942A20A918E - cbe1cbc434a5d79b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Swift.String, Alamofire.AFError&gt;) -&gt; () in swagApp.ScheduleManager.loadData(Swift.String) -&gt; ()"
+                  moduleName = "swagApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mleykhner/Documents/Threeply_2.0/swagApp/swagApp/ScheduleManager/ScheduleManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "15D80A8D-53BF-4B08-A393-1400C5A38412"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "swagApp/ScheduleManager/ScheduleManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "loadData(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

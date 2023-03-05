@@ -20,6 +20,7 @@ struct MonthObserverView: View {
     let onDateChange: (Date) -> Any
     
     @State var page: Page = Page.withIndex(1)
+    @State var previousPageIndex: Int = 1
     @State var deltaMonths: [Int] = [-1, 0, 1]
     @State var disableButtons: Bool = false
     
@@ -34,16 +35,13 @@ struct MonthObserverView: View {
         Pager(page: page, data: deltaMonths, id: \.self) {
             month in
             LazyVGrid(columns: columns) {
-                //!!!! selectedDay
                 ForEach (vm.fetchMonth(vm.deltaMonth(delta: month)), id: \.self){ day in
                     if day == Date.distantPast {
                         Spacer()
                     } else {
                         Button {
                             generator.selectionChanged()
-                            withAnimation(.easeOut) {
-                                selectedDay = day
-                            }
+                            selectedDay = day
                             _ = onDateChange(day)
                         } label: {
                             Text(day.extractDate("dd"))
@@ -54,6 +52,7 @@ struct MonthObserverView: View {
                                     RoundedRectangle(cornerRadius: 15, style: .continuous)
                                         .stroke(lineWidth: selectedDay.isSameAs(day) ? 2 : 0)
                                         .frame(width: 46, height: 46)
+                                        .animation(.easeOut, value: selectedDay)
                                 })
                                 .foregroundColor(Color(tm.getTheme().foregroundColor))
                                 .frame(maxWidth: .infinity)
@@ -74,25 +73,24 @@ struct MonthObserverView: View {
                 disableButtons = false
             })
         })
-        .onPageWillChange({ (newPage) in
-            withAnimation {
-                //Moving forward or backward a month
-                selectedDay = vm.deltaMonth(delta: (newPage - page.index), day: selectedDay)
+        .onPageChanged({ _ in
+            print("Page changed")
+            if page.index >= deltaMonths.count - 1 {
+                deltaMonths.append((deltaMonths.last ?? 0) + 1)
+                deltaMonths.removeFirst()
+                page.index -= 1
+                selectedDay = vm.deltaMonth(delta: 1, day: selectedDay)
+            } else if page.index <= 1 {
+                deltaMonths.insert((deltaMonths.first ?? 0) - 1, at: 0)
+                deltaMonths.removeLast()
+                page.index += 1
+                selectedDay = vm.deltaMonth(delta: -1, day: selectedDay)
+            } else {
+                selectedDay = vm.deltaMonth(delta: page.index - previousPageIndex, day: selectedDay)
             }
-        })
-        .onPageChanged({ newPage in
+            previousPageIndex = page.index
             generator.selectionChanged()
-            if newPage >= deltaMonths.count - 1 {
-                    deltaMonths.append((deltaMonths.last ?? 0) + 1)
-                    deltaMonths.removeFirst()
-                    page.index -= 1
-            } else if newPage <= 0 {
-                    deltaMonths.insert((deltaMonths.first ?? 0) - 1, at: 0)
-                    deltaMonths.removeLast()
-                    page.index += 1
-            }
         })
-        
     }
 }
 

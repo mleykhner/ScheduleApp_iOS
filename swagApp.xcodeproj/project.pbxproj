@@ -12,6 +12,8 @@
 		AD23D4BD29A16DD6007D39C7 /* BreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD23D4BC29A16DD6007D39C7 /* BreakView.swift */; };
 		AD23D4C029A17A1A007D39C7 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD23D4BF29A17A1A007D39C7 /* ScheduleView.swift */; };
 		AD23D4C329A17ACD007D39C7 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD23D4C229A17ACD007D39C7 /* CalendarView.swift */; };
+		AD49994229AD1E700036E543 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AD49994129AD1E700036E543 /* Alamofire */; };
+		AD49994429ADE6C60036E543 /* InfoMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49994329ADE6C50036E543 /* InfoMessageView.swift */; };
 		AD784CBC29A4BB17006D648E /* WeekObserverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD784CBB29A4BB17006D648E /* WeekObserverView.swift */; };
 		AD784CBE29A4D0CB006D648E /* WeekObserverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD784CBD29A4D0CB006D648E /* WeekObserverViewModel.swift */; };
 		AD784CC129A54110006D648E /* MonthObserverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD784CC029A54110006D648E /* MonthObserverView.swift */; };
@@ -50,6 +52,7 @@
 		AD23D4BC29A16DD6007D39C7 /* BreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakView.swift; sourceTree = "<group>"; };
 		AD23D4BF29A17A1A007D39C7 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		AD23D4C229A17ACD007D39C7 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		AD49994329ADE6C50036E543 /* InfoMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMessageView.swift; sourceTree = "<group>"; };
 		AD784CBB29A4BB17006D648E /* WeekObserverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekObserverView.swift; sourceTree = "<group>"; };
 		AD784CBD29A4D0CB006D648E /* WeekObserverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekObserverViewModel.swift; sourceTree = "<group>"; };
 		AD784CC029A54110006D648E /* MonthObserverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthObserverView.swift; sourceTree = "<group>"; };
@@ -90,6 +93,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD8F772D29A2C9CC00A35DE1 /* SwiftUIPager in Frameworks */,
+				AD49994229AD1E700036E543 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +125,7 @@
 				AD23D4C129A17AB3007D39C7 /* CalendarView */,
 				AD23D4BF29A17A1A007D39C7 /* ScheduleView.swift */,
 				AD784CCB29A666C0006D648E /* ScheduleViewModel.swift */,
+				AD49994329ADE6C50036E543 /* InfoMessageView.swift */,
 			);
 			path = ScheduleView;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 			name = swagApp;
 			packageProductDependencies = (
 				AD8F772C29A2C9CC00A35DE1 /* SwiftUIPager */,
+				AD49994129AD1E700036E543 /* Alamofire */,
 			);
 			productName = swagApp;
 			productReference = ADA5C1B529A0E99C005B9261 /* swagApp.app */;
@@ -324,6 +330,7 @@
 			mainGroup = ADA5C1AC29A0E99C005B9261;
 			packageReferences = (
 				AD8F772B29A2C9CC00A35DE1 /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
+				AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = ADA5C1B629A0E99C005B9261 /* Products */;
 			projectDirPath = "";
@@ -364,6 +371,7 @@
 				AD17136329A7C49600BD9FA2 /* MainFlowView.swift in Sources */,
 				AD8E4A2B29A27408003AB9A1 /* MinimalTheme.swift in Sources */,
 				AD784CBC29A4BB17006D648E /* WeekObserverView.swift in Sources */,
+				AD49994429ADE6C60036E543 /* InfoMessageView.swift in Sources */,
 				AD784CC129A54110006D648E /* MonthObserverView.swift in Sources */,
 				AD23D4C329A17ACD007D39C7 /* CalendarView.swift in Sources */,
 				AD784CBE29A4D0CB006D648E /* WeekObserverViewModel.swift in Sources */,
@@ -611,6 +619,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		AD8F772B29A2C9CC00A35DE1 /* XCRemoteSwiftPackageReference "SwiftUIPager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fermoya/SwiftUIPager.git";
@@ -622,6 +638,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AD49994129AD1E700036E543 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		AD8F772C29A2C9CC00A35DE1 /* SwiftUIPager */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AD8F772B29A2C9CC00A35DE1 /* XCRemoteSwiftPackageReference "SwiftUIPager" */;

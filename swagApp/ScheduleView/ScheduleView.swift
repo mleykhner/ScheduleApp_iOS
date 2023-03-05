@@ -11,39 +11,56 @@ struct ScheduleView: View {
     
     @StateObject var vm = ScheduleViewModel()
     @StateObject var tm = ThemeManager.shared
+    @StateObject var sm = ScheduleManager.shared
     
-    @State var selectedDay:Date = Date()
+    @State var selectedDay: Date = Date()
     @State var showSettings: Bool = false
+    @State var showInfoMessage: Bool = false
     
     var body: some View {
         ZStack(alignment: .bottom){
-            ScrollView(.vertical, showsIndicators: false){
-                HStack(alignment: .center) {
-                    Text(vm.schedule?.groupName.longDash() ?? "Группа не установлена")
-                        .font(.custom("Unbounded", size: 32))
-                        .fontWeight(.bold)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    Button {
-                        showSettings.toggle()
-                    } label: {
-                        Image(systemName: "gearshape")
-                            .font(.system(size: 24))
+            VStack {
+                ScrollView(.vertical, showsIndicators: false){
+                    if sm.loading {
+                        InfoMessageView()
+                            .transition(.opacity)
+                            .animation(.easeOut(duration: 0.3), value: sm.loading)
                     }
-                    .popover(isPresented: $showSettings) {
-                        SettingsView()
-                    }
-                    .onChange(of: showSettings) { _ in
-                        if let newGroup = UserDefaults().string(forKey: "preferredGroup") {
-                            vm.loadScheduleForGroup(newGroup)
-                        }
+                    HStack(alignment: .center) {
+                        Text(vm.schedule?.groupName.longDash() ?? "Группа не установлена")
+                            .font(.custom("Unbounded", size: 32))
+                            .fontWeight(.bold)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         
+                        Button {
+                            showSettings.toggle()
+                        } label: {
+                            Image(systemName: "gearshape")
+                                .font(.system(size: 24))
+                        }
+                        .popover(isPresented: $showSettings) {
+                            SettingsView()
+                        }
+                        .onChange(of: showSettings) { newValue in
+                            if !newValue {
+                                vm.reload()
+                            }
+                        }
+                    }
+                    .foregroundColor(Color(tm.getTheme().foregroundColor))
+                    .padding(12)
+                    showClasses(vm.getClassesForDate(selectedDay))
+                        
+                }
+                //MARK: Починить
+                .refreshable{
+                    if !sm.loading {
+                        vm.reload()
                     }
                 }
-                .foregroundColor(Color(tm.getTheme().foregroundColor))
-                .padding(12)
-                showClasses(vm.getClassesForDate(selectedDay))
             }
+            
+            
             
             
             CalendarView(selectedDay: $selectedDay)

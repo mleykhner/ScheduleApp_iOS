@@ -18,10 +18,12 @@
 "myGroup" = "My group";
 "friendsGroups" = "Friends groups";
 "edit" = "Edit";
+"tag" = "Tag";
 "settings" = "Settings";
 "reportABug" = "Report a bug";
 "changeGroup" = "Change group";
 "news" = "News";
 "schedule" = "Schedule";
 "tasks" = "Tasks";
-"friendsGroupsDescription" = "You can quickly switch to the schedules for these groups by long clicking on the \"Schedule\" button. You will not be able to add tasks for them, as well as view them.";
+"friendsGroupsDescription" = "You can quickly switch to the schedules for these groups with long press on the \"Schedule\" button. You will not be able to add tasks for them, as well as view them.";
+"themeDescription" = "The theme changes colors throughout the application, but most of all it is noticeable in the \"Schedule\". You can also change the color of any object with a long hold on it";

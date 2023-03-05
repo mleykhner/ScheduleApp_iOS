@@ -10,17 +10,39 @@ import Foundation
 class ScheduleViewModel : ObservableObject {
     
     init(){
-        if let preferredGroup = UserDefaults().string(forKey: "preferredGroup") {
-            schedule = sm.parse(jsonData: sm.readLocalFile(forName: preferredGroup)!)
+        getScheduleForPrefferedGroup()
+    }
+    
+    @Published var schedule: ScheduleModel?
+    
+    func getScheduleForPrefferedGroup() {
+        if let scheduleData = ScheduleManager.shared.getCachedScheduleData() {
+            self.schedule = ScheduleManager.shared.parseSchedule(jsonData: scheduleData)
+        } else {
+            reload()
         }
     }
     
-    let sm = ScheduleManager()
-    var schedule: ScheduleModel?
+    func reload() {
+        if let preferredGroup = UserDefaults().string(forKey: "preferredGroup") {
+            Task{
+                if let scheduleData = await ScheduleManager.shared.loadData(preferredGroup) {
+                    ScheduleManager.shared.cacheScheduleData(scheduleData)
+                    DispatchQueue.main.async {
+                        self.schedule = ScheduleManager.shared.parseSchedule(jsonData: scheduleData)
+                    }
+                }
+            }
+        }
+    }
     
     func loadScheduleForGroup(_ group: String){
-        schedule = sm.parse(jsonData: sm.readLocalFile(forName: group)!)
-        objectWillChange.send()
+        Task{
+            if let scheduleData = await ScheduleManager.shared.loadData(group) {
+                DispatchQueue.main.async {
+                    self.schedule = ScheduleManager.shared.parseSchedule(jsonData: scheduleData)
+                }            }
+        }
     }
     
     func getClassesForDate(_ date: Date) -> [ClassModel] {

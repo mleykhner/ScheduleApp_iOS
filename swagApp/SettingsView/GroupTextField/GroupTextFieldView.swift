@@ -30,6 +30,11 @@ struct GroupTextFieldView: View {
     }
     
     private func format(){
+        
+        if groupName.count <= 4 {
+            groupName = groupName.uppercased()
+        }
+        
         let patternIntituteAndType = "\\w\\d{1,2}|и\\w"
         let pattern = "(\\w)(\\d{1,2}|и)(\\w)(\\d{3})(\\w{1,3})(\\d{2})"
         let result = groupName.replacingOccurrences(of: pattern, with: "$1$2$3-$4$5-$6", options: .regularExpression)

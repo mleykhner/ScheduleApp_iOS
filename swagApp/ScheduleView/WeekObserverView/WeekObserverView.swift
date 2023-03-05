@@ -19,13 +19,12 @@ struct WeekObserverView: View {
     @State var originDate: Date
     
     @State var page: Page = Page.withIndex(3)
+    @State var previousPageIndex:Int = 3
     @State var deltaWeeks: [Int] = [-3, -2, -1, 0, 1, 2, 3]
     @State var disableButtons: Bool = false
     
     let vm =  WeekObserverViewModel()
     @StateObject var tm = ThemeManager.shared
-    
-    @State var previousPageIndex:Int = 3
     
     let generator = UISelectionFeedbackGenerator()
     
@@ -35,9 +34,8 @@ struct WeekObserverView: View {
                 ForEach(vm.fetchWeek(vm.deltaWeek(delta: deltaWeek, day: originDate)), id: \.self){ day in
                     Button {
                         generator.selectionChanged()
-                        withAnimation(.easeOut) {
-                            selectedDay = day
-                        }
+                        selectedDay = day
+                        
                     } label: {
                         Text(day.extractDate("dd"))
                             .font(.custom("Unbounded", size: 20))
@@ -47,6 +45,7 @@ struct WeekObserverView: View {
                                 RoundedRectangle(cornerRadius: 15, style: .continuous)
                                     .stroke(lineWidth: selectedDay.isSameAs(day) ? 2 : 0)
                                     .frame(width: 46, height: 46)
+                                    .animation(.easeOut, value: selectedDay)
                             })
                             .foregroundColor(Color(tm.getTheme().foregroundColor).opacity(day.isSameMonth(selectedDay) ? 1 : 0.4))
                             .frame(maxWidth: .infinity)
@@ -64,28 +63,28 @@ struct WeekObserverView: View {
                 disableButtons = false
             })
         })
-        .onPageWillChange({ (newPage) in
-            withAnimation {
-                //Moving forward or backward a week
-                //!!!
-                generator.selectionChanged()
-                selectedDay = vm.deltaWeek(delta: (newPage - page.index), day: selectedDay)
-            }
-        })
-        .onPageChanged({ newPage in
-            if newPage >= deltaWeeks.count - 2 {
+        .onPageChanged({ _ in
+            print("Page changed")
+            if page.index >= deltaWeeks.count - 2 {
                 (1..<4).forEach { _ in
                     deltaWeeks.append((deltaWeeks.last ?? 0) + 1)
                     deltaWeeks.removeFirst()
                     page.index -= 1
                 }
-            } else if newPage <= 1 {
+                selectedDay = vm.deltaWeek(delta: 1, day: selectedDay)
+            } else if page.index <= 1 {
                 (1..<4).forEach { _ in
                     deltaWeeks.insert((deltaWeeks.first ?? 0) - 1, at: 0)
                     deltaWeeks.removeLast()
                     page.index += 1
                 }
+                selectedDay = vm.deltaWeek(delta: -1, day: selectedDay)
+            } else {
+                selectedDay = vm.deltaWeek(delta: page.index - previousPageIndex, day: selectedDay)
             }
+            previousPageIndex = page.index
+            generator.selectionChanged()
+            
         })
         .itemSpacing(50)
         .frame(height: 48)

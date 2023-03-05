@@ -6,14 +6,56 @@
 //
 
 import Foundation
+import Alamofire
 
-class ScheduleManager {
+class ScheduleManager : ObservableObject {
+    
+    static let shared = ScheduleManager()
+    
+    var schedule: ScheduleModel? = nil
+    @Published var loading: Bool = false
+    @Published var errorOccured: Bool = false
+    @Published var errorCode: Int? = nil
+    
+    func loadData(_ group: String) async -> Data? {
+        //var result: Data?
+        DispatchQueue.main.async {
+            self.loading = true
+        }
+        let headers: HTTPHeaders = [
+            "User-Id": "VXNlcm5hbWU6UGFzc3dvcmQ"
+        ]
+        let dataTask = AF.request("http://172.27.132.170:8080/Groups/\(group)".encodeUrl, method: .get, headers: headers, requestModifier: { $0.timeoutInterval = 5 }).serializingData()
+        
+        if let data = try? await dataTask.value {
+            DispatchQueue.main.async {
+                self.loading = false
+            }
+            return data
+        }
+        
+        DispatchQueue.main.async {
+            self.loading = false
+        }
+    
+        return nil
+    }
+    
+    func cacheScheduleData(_ data: Data){
+        UserDefaults.standard.set(data, forKey: "cachedScheduleData")
+    }
+    
+    func getCachedScheduleData() -> Data? {
+        return UserDefaults.standard.data(forKey: "cachedScheduleData")
+    }
+    
+    
     
     func readLocalFile(forName name: String) -> Data? {
         do {
             if let bundlePath = Bundle.main.path(forResource: name,
                                                  ofType: "json"),
-                let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+               let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
                 return jsonData
             }
         } catch {
@@ -23,20 +65,18 @@ class ScheduleManager {
         return nil
     }
     
-    func parse(jsonData: Data) -> ScheduleModel {
+    func parseSchedule(jsonData: Data) -> ScheduleModel {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(formatter)
-        //decoder.dateDecodingStrategy = .formatted(.)
-        
         do {
             let decodedData = try decoder.decode(ScheduleModel.self,
-                                                       from: jsonData)
+                                                 from: jsonData)
             
-            print("Group: \(decodedData.groupName)")
+            print("Decoded group: \(decodedData.groupName)")
             return decodedData
-            //print("===================================")
+            
         } catch {
             print(error)
         }
@@ -52,3 +92,15 @@ extension DateFormatter {
         return formatter
     }()
 }
+
+extension String{
+    var encodeUrl : String
+    {
+        return self.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+    }
+    var decodeUrl : String
+    {
+        return self.removingPercentEncoding!
+    }
+}
+

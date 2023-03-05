@@ -77,12 +77,11 @@ struct CalendarView: View {
                         })
                             .frame(maxHeight: 300)
                             .padding(.horizontal, -18)
-                        //MARK: Подумать еще
                             .transition(.opacity.animation(.easeOut(duration: 0.3)))
                     }
                 }
                 .frame(maxHeight: draggingProgress)
-                .animation(.linear, value: draggingProgress)
+
                 
                 HStack{
                     ForEach(vm.fetchWeekdays(), id: \.self){
@@ -109,13 +108,9 @@ struct CalendarView: View {
                     
                     
                     if draggingProgress / (300 - 48) > 0.5 {
-                        withAnimation {
-                            visibleObserver = false
-                        }
+                        visibleObserver = false
                     } else {
-                        withAnimation {
-                            visibleObserver = true
-                        }
+                        visibleObserver = true
                     }
                     
                     if draggingProgress < 48{
@@ -143,6 +138,7 @@ struct CalendarView: View {
             visibleObserver = true
             draggingProgress = 48
         }
+        vm.objectWillChange.send()
     }
 }
 
