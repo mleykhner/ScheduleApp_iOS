@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  shked
+
+  Created by Максим Лейхнер on 05.03.2023.
+  
+*/
+"CFBundleDisplayName" = "Shked";
+"CFBundleName" = "Shked";
