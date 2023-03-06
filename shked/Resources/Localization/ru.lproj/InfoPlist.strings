@@ -7,3 +7,4 @@
 */
 "CFBundleDisplayName" = "Шкед";
 "CFBundleName" = "Шкед";
+"NSPhotoLibraryUsageDescription" = "Мне нужен доступ к фото, чтобы добавлять картинки к заданиям";

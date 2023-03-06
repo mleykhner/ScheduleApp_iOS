@@ -22,6 +22,7 @@ struct SettingsView: View {
     }
     
     @StateObject var tm = ThemeManager.shared
+    @StateObject var vm = SettingsViewModel()
     
     @State var preferredGroup: String = UserDefaults().string(forKey: "preferredGroup") ?? ""
     @State var friendsGroups: [groupWithLabel]
@@ -78,8 +79,21 @@ struct SettingsView: View {
                             .disabled(!isEditingMyGroup) //Активировать с кнопки
                             .focused($focusedField, equals: .myGroup)
                             .onSubmit {
-                                UserDefaults().set(preferredGroup, forKey: "preferredGroup")
                                 isEditingMyGroup.toggle()
+                                Task {
+                                    if let responce = await vm.checkGroupName(preferredGroup) {
+                                        if responce.isValid {
+                                            preferredGroup = responce.formattedName ?? preferredGroup
+                                            UserDefaults.standard.set(preferredGroup, forKey: "preferredGroup")
+                                        }
+                                    }
+                                    else {
+                                        preferredGroup = UserDefaults.standard.string(forKey: "preferredGroup") ?? ""
+                                    }
+                                }
+                                
+                                
+                                
                             }
                             .padding(12)
                             .background(Color(tm.getTheme().backgroundColor))
@@ -206,8 +220,8 @@ struct SettingsView: View {
                         .font(.custom("Golos Text VF", size: 13))
                         .foregroundColor(Color(tm.getTheme().foregroundColor).opacity(0.7))
                     VStack(spacing: 4){
-                        ClassView(ClassObject: ClassModel(name: "Физика", ordinal: 1, type: .lecture, location: "ГУК Б-261"))
-                        ClassView(ClassObject: ClassModel(name: "Философия", ordinal: 2, type: .practical, location: "3-431"))
+                        ClassView(ClassObject: ClassModel(name: "Физика", ordinal: 1, type: .lecture, location: "ГУК Б-261")).disabled(true)
+                        ClassView(ClassObject: ClassModel(name: "Философия", ordinal: 2, type: .practical, location: "3-431")).disabled(true)
                     }
                     .padding(18)
                     .background(Color(tm.getTheme().backgroundColor))

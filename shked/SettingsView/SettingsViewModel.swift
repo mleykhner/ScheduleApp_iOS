@@ -23,7 +23,7 @@ class SettingsViewModel : ObservableObject {
             "User-Id": UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
         ]
         
-        let dataTask = AF.request("http://172.27.132.170:8080/Groups/\(preparedGroup)".encodeUrl, method: .get, headers: headers, requestModifier: { $0.timeoutInterval = 5 }).serializingDecodable(GroupValidityResponse.self)
+        let dataTask = AF.request("http://172.27.132.170:8080/Groups/GetGroupValidity/\(preparedGroup)".encodeUrl, method: .get, headers: headers, requestModifier: { $0.timeoutInterval = 5 }).serializingDecodable(GroupValidityResponse.self)
         
         do {
             let value = try await dataTask.value
@@ -40,5 +40,5 @@ class SettingsViewModel : ObservableObject {
 struct GroupValidityResponse : Decodable {
     var requestedGroup: String
     var formattedName: String
-    var isValid: String
+    var isValid: Bool
 }
