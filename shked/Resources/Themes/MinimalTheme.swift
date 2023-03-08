@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-final class MinimalTheme : Theme {
+final class MinimalTheme : AppTheme {
     var contentColors: [String] = ["SecondaryBackground"]
     var foregroundColor: String = "Foreground"
     var backgroundColor: String = "Background"

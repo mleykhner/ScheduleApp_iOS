@@ -11,6 +11,7 @@ class ThemeManager : ObservableObject {
     
     init(){
         let selectedThemeId = UserDefaults.standard.integer(forKey: "selectedTheme")
+        
         switch selectedThemeId {
         case 1:
             selectedTheme = MinimalTheme()
@@ -23,14 +24,15 @@ class ThemeManager : ObservableObject {
     
     static let shared = ThemeManager()
     
-    private var selectedTheme: Theme
+    private var selectedTheme: AppTheme
     
-    func getTheme() -> Theme {
+    func getTheme() -> AppTheme {
         return selectedTheme
     }
     
-    func setTheme(_ theme: Theme){
+    func setTheme(_ theme: AppTheme){
         selectedTheme = theme
+        
         switch theme {
         case is MinimalTheme:
             UserDefaults.standard.set(1, forKey: "selectedTheme")

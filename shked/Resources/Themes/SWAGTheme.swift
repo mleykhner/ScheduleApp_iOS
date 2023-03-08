@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-final class SWAGTheme : Theme {
+final class SWAGTheme : AppTheme {
     var contentColors: [String] = ["AcidPink", "VividBlue", "NaughtyOrange", "RocketTurquoise"]
     var foregroundColor: String = "Foreground"
     var backgroundColor: String = "Background"

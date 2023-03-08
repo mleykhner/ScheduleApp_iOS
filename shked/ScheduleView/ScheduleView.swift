@@ -82,7 +82,7 @@ struct ScheduleView: View {
                 if hasSecondClass && classObject.ordinal == 3 {
                     BreakView()
                 }
-                ClassView(ClassObject: classObject/*, colorId: 1*/)
+                ClassView(classObject: classObject/*, colorId: 1*/)
             }
 //            .transition(.slide)
 //            .animation(.easeOut(duration: 0.1))

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-final class CalmTheme : Theme {
+final class CalmTheme : AppTheme {
     var contentColors: [String] = ["DirtyGreen", "FoggyBlue", "BrickRed", "CalmBeige"]
     var foregroundColor: String = "Foreground"
     var backgroundColor: String = "Background"

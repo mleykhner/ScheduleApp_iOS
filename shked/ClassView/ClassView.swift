@@ -9,7 +9,19 @@ import SwiftUI
 
 struct ClassView: View {
     
-    let ClassObject: ClassModel
+    init(classObject: ClassModel){
+        self.classObject = classObject
+        self.task = nil
+    }
+    
+    init(classObject: ClassModel, task: TaskModel){
+        self.classObject = classObject
+        self.task = task
+    }
+
+    
+    let classObject: ClassModel
+    let task: TaskModel?
     
     @StateObject var vm = ClassViewModel()
     @StateObject var tm = ThemeManager.shared
@@ -19,16 +31,14 @@ struct ClassView: View {
     
     @Environment(\.colorScheme) var colorScheme
     
-    //var colorId: UInt
-    
     var body: some View {
         
-        let colorId = vm.getColorIndexForClass(ClassObject.name)
+        let colorId = vm.getColorIndexForClass(classObject.name)
         
         VStack(spacing: 12) {
             HStack(alignment: .top, spacing: 18) {
                 VStack {
-                    Text("\(ClassObject.ordinal)")
+                    Text("\(classObject.ordinal)")
                         .foregroundColor(Color(tm.getTheme().secondaryForegroundColor))
                         .font(.custom("Unbounded", size: 20))
                         .fontWeight(.bold)
@@ -50,13 +60,13 @@ struct ClassView: View {
                             .foregroundColor(getContrastColor(tm.getTheme().getColorName(colorId)).opacity(0.8))
                     }
                     VStack(alignment: .leading, spacing: 8){
-                        Text(ClassObject.name.uppercased())
+                        Text(classObject.name.uppercased())
                             .foregroundColor(getContrastColor(tm.getTheme().getColorName(colorId)))
                             .font(.custom("Unbounded", size: 20))
                         .fontWeight(.bold)
                         HStack {
                             HStack(spacing: 14){
-                                Text(ClassObject.type.getLocalizedName().uppercased())
+                                Text(classObject.type.getLocalizedName().uppercased())
                                     .fontWeight(.semibold)
                                     .padding(.horizontal, 6)
                                     .padding(.vertical, 3)
@@ -65,9 +75,9 @@ struct ClassView: View {
                                             .stroke(lineWidth: 2.5)
                                     }
                                     
-                                Text(ClassObject.location)
+                                Text(classObject.location)
                                     .fontWeight(.semibold)
-                                Text(ClassObject.getTimeString())
+                                Text(classObject.getTimeString())
                             }
                             .font(.custom("Golos Text VF", size: 16))
                             .foregroundColor(getContrastColor(tm.getTheme().getColorName(colorId)).opacity(0.75))
@@ -93,23 +103,28 @@ struct ClassView: View {
                 VStack(alignment: .leading){
                     HStack {
                         Image(systemName: "person")
-                        Text(ClassObject.teacher?.capitalized ?? "–")
+                        Text(classObject.teacher?.capitalized ?? "–")
                             .font(.custom("Golos Text VF", size: 16))
                     }
                     Divider()
-                    HStack{
-                        Text("noTask")
-                            .font(.custom("Golos Text VF", size: 16))
-                        Spacer()
-                        Button {
-                            //tm.setTheme(SWAGTheme())
-                        } label: {
-                            Label("add", systemImage: "plus")
+                    if let task = task {
+                        TaskView(task: task)
+                    } else {
+                        HStack{
+                            Text("noTask")
                                 .font(.custom("Golos Text VF", size: 16))
-                                .fontWeight(.semibold)
-                                .foregroundColor(Color(tm.getTheme().foregroundColor))
+                            Spacer()
+                            Button {
+                                //tm.setTheme(SWAGTheme())
+                            } label: {
+                                Label("add", systemImage: "plus")
+                                    .font(.custom("Golos Text VF", size: 16))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(Color(tm.getTheme().foregroundColor))
+                            }
                         }
                     }
+                    
                 }
                 .padding(12)
                 .frame(maxWidth: .infinity, maxHeight: taskOpened ? nil : 0, alignment: .leading)
@@ -155,7 +170,7 @@ struct ClassView_Previews: PreviewProvider {
                 if i == 2 {
                     BreakView()
                 }
-                ClassView(ClassObject: newClass/*, colorId: i.magnitude*/)
+                ClassView(classObject: newClass/*, colorId: i.magnitude*/)
             }
         }
             

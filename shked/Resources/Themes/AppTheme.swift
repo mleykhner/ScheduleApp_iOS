@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-protocol Theme {
+protocol AppTheme {
     
     var contentColors: [String] { get }
     
@@ -21,7 +21,7 @@ protocol Theme {
     var themeName: String { get }
 }
 
-extension Theme {
+extension AppTheme {
     
     func getColor(_ id: UInt) -> Color {
         return Color(contentColors[Int(id) % contentColors.count])

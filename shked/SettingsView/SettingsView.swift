@@ -21,6 +21,8 @@ struct SettingsView: View {
         }
     }
     
+    let generator = UINotificationFeedbackGenerator()
+    
     @StateObject var tm = ThemeManager.shared
     @StateObject var vm = SettingsViewModel()
     
@@ -34,6 +36,7 @@ struct SettingsView: View {
     @State var groupNumberTyped: Bool = false
     @State var isEditingFriendsGroups: Bool = false
     @State var isEditingMyGroup: Bool = false
+    @State var showInvalidGroupNameAlert: Bool = false
     
     @FocusState private var focusedField: Field?
     
@@ -73,31 +76,56 @@ struct SettingsView: View {
                                 }
                             }
                         }
-                        TextField("group", text: $preferredGroup)
-                            .font(.custom("Golos Text VF", size: 16))
-                            .fontWeight(.medium)
-                            .disabled(!isEditingMyGroup) //Активировать с кнопки
-                            .focused($focusedField, equals: .myGroup)
-                            .onSubmit {
-                                isEditingMyGroup.toggle()
-                                Task {
-                                    if let responce = await vm.checkGroupName(preferredGroup) {
-                                        if responce.isValid {
-                                            preferredGroup = responce.formattedName ?? preferredGroup
-                                            UserDefaults.standard.set(preferredGroup, forKey: "preferredGroup")
+                        HStack{
+                            TextField("group", text: $preferredGroup)
+                                .font(.custom("Golos Text VF", size: 16))
+                                .fontWeight(.medium)
+                                .disabled(!isEditingMyGroup) //Активировать с кнопки
+                                .focused($focusedField, equals: .myGroup)
+                                .onSubmit {
+                                    isEditingMyGroup.toggle()
+                                    Task {
+                                        if let responce = await vm.checkGroupName(preferredGroup) {
+                                            if responce.isValid {
+                                                generator.notificationOccurred(.success)
+                                                preferredGroup = responce.formattedGroup ?? preferredGroup
+                                                UserDefaults.standard.set(preferredGroup, forKey: "preferredGroup")
+                                            }
+                                            else {
+                                                //!!!
+                                                showInvalidGroupNameAlert.toggle()
+                                                generator.notificationOccurred(.error)
+                                                preferredGroup = UserDefaults.standard.string(forKey: "preferredGroup") ?? ""
+                                            }
+
+                                        }
+                                        else {
+                                            generator.notificationOccurred(.error)
+                                            preferredGroup = UserDefaults.standard.string(forKey: "preferredGroup") ?? ""
                                         }
                                     }
-                                    else {
-                                        preferredGroup = UserDefaults.standard.string(forKey: "preferredGroup") ?? ""
-                                    }
+                                    
+                                    
+                                    
                                 }
-                                
-                                
-                                
+                            Spacer()
+                            if vm.isCheckingGroupValidity {
+                                ProgressView()
                             }
-                            .padding(12)
-                            .background(Color(tm.getTheme().backgroundColor))
-                            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                        }
+                        .padding(12)
+                        .background(Color(tm.getTheme().backgroundColor))
+                        .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                        .alert("Неизвестная группа", isPresented: $showInvalidGroupNameAlert) {
+                            Button{
+                                showInvalidGroupNameAlert.toggle()
+                            } label: {
+                                Text("ok")
+                            }
+                        } message: {
+                            Text("Ты педик блять пиши группу блять нормальную сука")
+                        }
+
                         
                     }
                     
@@ -220,8 +248,8 @@ struct SettingsView: View {
                         .font(.custom("Golos Text VF", size: 13))
                         .foregroundColor(Color(tm.getTheme().foregroundColor).opacity(0.7))
                     VStack(spacing: 4){
-                        ClassView(ClassObject: ClassModel(name: "Физика", ordinal: 1, type: .lecture, location: "ГУК Б-261")).disabled(true)
-                        ClassView(ClassObject: ClassModel(name: "Философия", ordinal: 2, type: .practical, location: "3-431")).disabled(true)
+                        ClassView(classObject: ClassModel(name: "Физика", ordinal: 1, type: .lecture, location: "ГУК Б-261")).disabled(true)
+                        ClassView(classObject: ClassModel(name: "Философия", ordinal: 2, type: .practical, location: "3-431")).disabled(true)
                     }
                     .padding(18)
                     .background(Color(tm.getTheme().backgroundColor))

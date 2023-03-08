@@ -16,22 +16,32 @@ class SettingsViewModel : ObservableObject {
     func checkGroupName(_ group: String) async -> GroupValidityResponse? {
         let pattern = "[^А-Яа-я0-9]+"
         let preparedGroup = group.replacingOccurrences(of: pattern, with: "", options: .regularExpression).lowercased()
+        DispatchQueue.main.async {
+            self.isCheckingGroupValidity = true
+        }
         
-        self.isCheckingGroupValidity = true
         
         let headers: HTTPHeaders = await [
-            "User-Id": UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
+            "User-Id": "developer" + (UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString)
         ]
         
-        let dataTask = AF.request("http://172.27.132.170:8080/Groups/GetGroupValidity/\(preparedGroup)".encodeUrl, method: .get, headers: headers, requestModifier: { $0.timeoutInterval = 5 }).serializingDecodable(GroupValidityResponse.self)
+        let request = "http://172.27.132.170:8080/Groups/GetGroupValidity/\(preparedGroup)".encodeUrl
+        
+        print(request)
+        
+        let dataTask = AF.request(request, method: .get, headers: headers, requestModifier: { $0.timeoutInterval = 5 }).serializingDecodable(GroupValidityResponse.self)
         
         do {
             let value = try await dataTask.value
-            isCheckingGroupValidity = false
+            DispatchQueue.main.async {
+                self.isCheckingGroupValidity = false
+            }
             return value
         } catch {
             print(error)
-            isCheckingGroupValidity = false
+            DispatchQueue.main.async {
+                self.isCheckingGroupValidity = true
+            }
             return nil
         }
     }
@@ -39,6 +49,6 @@ class SettingsViewModel : ObservableObject {
 
 struct GroupValidityResponse : Decodable {
     var requestedGroup: String
-    var formattedName: String
+    var formattedGroup: String?
     var isValid: Bool
 }

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD07489429B8BE360047EDF8 /* Attachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07489329B8BE360047EDF8 /* Attachment.swift */; };
+		AD07489629B8BE5B0047EDF8 /* AttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07489529B8BE5B0047EDF8 /* AttachmentView.swift */; };
+		AD108B0029B72DB700E4755E /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD108AFF29B72DB700E4755E /* TaskModel.swift */; };
+		AD108B0229B74BF000E4755E /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD108B0129B74BF000E4755E /* TaskView.swift */; };
+		AD108B0529B74CD000E4755E /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = AD108B0429B74CD000E4755E /* MarkdownUI */; };
 		AD17136129A7B6FC00BD9FA2 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD17136029A7B6FC00BD9FA2 /* TabBarView.swift */; };
 		AD17136329A7C49600BD9FA2 /* MainFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD17136229A7C49600BD9FA2 /* MainFlowView.swift */; };
 		AD23D4BD29A16DD6007D39C7 /* BreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD23D4BC29A16DD6007D39C7 /* BreakView.swift */; };
@@ -21,7 +26,7 @@
 		AD784CC829A5747D006D648E /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD784CC729A5747D006D648E /* ScheduleModel.swift */; };
 		AD784CCA29A576BD006D648E /* ScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD784CC929A576BD006D648E /* ScheduleManager.swift */; };
 		AD784CCC29A666C1006D648E /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD784CCB29A666C0006D648E /* ScheduleViewModel.swift */; };
-		AD8E4A2529A26162003AB9A1 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8E4A2429A26162003AB9A1 /* Theme.swift */; };
+		AD8E4A2529A26162003AB9A1 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8E4A2429A26162003AB9A1 /* AppTheme.swift */; };
 		AD8E4A2729A267B5003AB9A1 /* SWAGTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8E4A2629A267B5003AB9A1 /* SWAGTheme.swift */; };
 		AD8E4A2929A272F2003AB9A1 /* CalmTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8E4A2829A272F2003AB9A1 /* CalmTheme.swift */; };
 		AD8E4A2B29A27408003AB9A1 /* MinimalTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8E4A2A29A27408003AB9A1 /* MinimalTheme.swift */; };
@@ -44,6 +49,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD07489329B8BE360047EDF8 /* Attachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachment.swift; sourceTree = "<group>"; };
+		AD07489529B8BE5B0047EDF8 /* AttachmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentView.swift; sourceTree = "<group>"; };
+		AD108AFF29B72DB700E4755E /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		AD108B0129B74BF000E4755E /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		AD17136029A7B6FC00BD9FA2 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		AD17136229A7C49600BD9FA2 /* MainFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowView.swift; sourceTree = "<group>"; };
 		AD23D4BC29A16DD6007D39C7 /* BreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakView.swift; sourceTree = "<group>"; };
@@ -57,7 +66,7 @@
 		AD784CC729A5747D006D648E /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		AD784CC929A576BD006D648E /* ScheduleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleManager.swift; sourceTree = "<group>"; };
 		AD784CCB29A666C0006D648E /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
-		AD8E4A2429A26162003AB9A1 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		AD8E4A2429A26162003AB9A1 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		AD8E4A2629A267B5003AB9A1 /* SWAGTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAGTheme.swift; sourceTree = "<group>"; };
 		AD8E4A2829A272F2003AB9A1 /* CalmTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalmTheme.swift; sourceTree = "<group>"; };
 		AD8E4A2A29A27408003AB9A1 /* MinimalTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalTheme.swift; sourceTree = "<group>"; };
@@ -87,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD108B0529B74CD000E4755E /* MarkdownUI in Frameworks */,
 				AD8F772D29A2C9CC00A35DE1 /* SwiftUIPager in Frameworks */,
 				AD49994229AD1E700036E543 /* Alamofire in Frameworks */,
 			);
@@ -95,6 +105,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD07489229B8BE180047EDF8 /* Attachments */ = {
+			isa = PBXGroup;
+			children = (
+				AD07489329B8BE360047EDF8 /* Attachment.swift */,
+				AD07489529B8BE5B0047EDF8 /* AttachmentView.swift */,
+			);
+			path = Attachments;
+			sourceTree = "<group>";
+		};
+		AD108AFE29B72D9800E4755E /* TaskView */ = {
+			isa = PBXGroup;
+			children = (
+				AD07489229B8BE180047EDF8 /* Attachments */,
+				AD108AFF29B72DB700E4755E /* TaskModel.swift */,
+				AD108B0129B74BF000E4755E /* TaskView.swift */,
+			);
+			path = TaskView;
+			sourceTree = "<group>";
+		};
 		AD17135E29A7B6AA00BD9FA2 /* MainFlowView */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,7 +193,7 @@
 		AD8E4A2329A26152003AB9A1 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
-				AD8E4A2429A26162003AB9A1 /* Theme.swift */,
+				AD8E4A2429A26162003AB9A1 /* AppTheme.swift */,
 				AD8E4A2629A267B5003AB9A1 /* SWAGTheme.swift */,
 				AD8E4A2829A272F2003AB9A1 /* CalmTheme.swift */,
 				AD8E4A2A29A27408003AB9A1 /* MinimalTheme.swift */,
@@ -201,6 +230,7 @@
 		ADA5C1B729A0E99C005B9261 /* shked */ = {
 			isa = PBXGroup;
 			children = (
+				AD108AFE29B72D9800E4755E /* TaskView */,
 				ADDD58D729A8C76C0041A8D0 /* SettingsView */,
 				AD17135E29A7B6AA00BD9FA2 /* MainFlowView */,
 				AD23D4BE29A179F8007D39C7 /* ScheduleView */,
@@ -282,6 +312,7 @@
 			packageProductDependencies = (
 				AD8F772C29A2C9CC00A35DE1 /* SwiftUIPager */,
 				AD49994129AD1E700036E543 /* Alamofire */,
+				AD108B0429B74CD000E4755E /* MarkdownUI */,
 			);
 			productName = shked;
 			productReference = ADA5C1B529A0E99C005B9261 /* shked.app */;
@@ -314,6 +345,7 @@
 			packageReferences = (
 				AD8F772B29A2C9CC00A35DE1 /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
 				AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				AD108B0329B74CD000E4755E /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 			);
 			productRefGroup = ADA5C1B629A0E99C005B9261 /* Products */;
 			projectDirPath = "";
@@ -345,7 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD8E4A2529A26162003AB9A1 /* Theme.swift in Sources */,
+				AD8E4A2529A26162003AB9A1 /* AppTheme.swift in Sources */,
 				AD23D4BD29A16DD6007D39C7 /* BreakView.swift in Sources */,
 				ADA5C1DF29A1289C005B9261 /* ClassViewModel.swift in Sources */,
 				AD17136329A7C49600BD9FA2 /* MainFlowView.swift in Sources */,
@@ -356,20 +388,24 @@
 				AD23D4C329A17ACD007D39C7 /* CalendarView.swift in Sources */,
 				AD784CBE29A4D0CB006D648E /* WeekObserverViewModel.swift in Sources */,
 				ADDD58D929A8C78A0041A8D0 /* SettingsView.swift in Sources */,
+				AD07489629B8BE5B0047EDF8 /* AttachmentView.swift in Sources */,
 				ADA5C1BB29A0E99C005B9261 /* ContentView.swift in Sources */,
 				AD8E4A3029A2B462003AB9A1 /* CalendarViewModel.swift in Sources */,
 				AD784CCC29A666C1006D648E /* ScheduleViewModel.swift in Sources */,
 				AD8E4A2D29A2744A003AB9A1 /* ThemeManager.swift in Sources */,
+				AD108B0229B74BF000E4755E /* TaskView.swift in Sources */,
 				AD17136129A7B6FC00BD9FA2 /* TabBarView.swift in Sources */,
 				AD9D64A629B4BF48002300B9 /* SettingsViewModel.swift in Sources */,
 				AD23D4C029A17A1A007D39C7 /* ScheduleView.swift in Sources */,
 				AD784CCA29A576BD006D648E /* ScheduleManager.swift in Sources */,
 				ADA5C1B929A0E99C005B9261 /* shkedApp.swift in Sources */,
 				ADA5C1D629A120EF005B9261 /* ClassModel.swift in Sources */,
+				AD108B0029B72DB700E4755E /* TaskModel.swift in Sources */,
 				AD8E4A2929A272F2003AB9A1 /* CalmTheme.swift in Sources */,
 				AD784CC329A54CDD006D648E /* MonthObserverViewModel.swift in Sources */,
 				ADA5C1CA29A0EB42005B9261 /* ClassView.swift in Sources */,
 				AD784CC829A5747D006D648E /* ScheduleModel.swift in Sources */,
+				AD07489429B8BE360047EDF8 /* Attachment.swift in Sources */,
 				AD8E4A2729A267B5003AB9A1 /* SWAGTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,6 +438,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -462,6 +499,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -608,6 +646,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AD108B0329B74CD000E4755E /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -627,6 +673,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AD108B0429B74CD000E4755E /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD108B0329B74CD000E4755E /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			productName = MarkdownUI;
+		};
 		AD49994129AD1E700036E543 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire" */;

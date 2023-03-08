@@ -25,10 +25,10 @@ class ScheduleManager : ObservableObject {
         }
         
         let headers: HTTPHeaders = await [
-            "User-Id": UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
+            "User-Id": "developer" + (UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString)
         ]
         
-        let dataTask = AF.request("http://172.27.132.170:8080/Groups/\(group)".encodeUrl, method: .get, headers: headers, requestModifier: { $0.timeoutInterval = 5 }).serializingData()
+        let dataTask = AF.request("http://172.27.132.170:8080/Groups/\(group)".encodeUrl, method: .get, headers: headers, requestModifier: { $0.timeoutInterval = 15 }).serializingData()
         
         if let data = try? await dataTask.value {
             DispatchQueue.main.async {
