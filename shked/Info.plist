@@ -14,7 +14,13 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Unbounded.ttf</string>
-		<string>Golos.ttf</string>
+		<string>PT Root UI VF.ttf</string>
+		<string>PT Mono Regular.ttf</string>
+		<string>PT Mono Bold.ttf</string>
+		<string>PT Sans Regular.ttf</string>
+		<string>PT Sans Regular Italic.ttf</string>
+		<string>PT Sans Bold.ttf</string>
+		<string>PT Sans Bold Italic.ttf</string>
 	</array>
 </dict>
 </plist>

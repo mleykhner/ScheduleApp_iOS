@@ -15,7 +15,7 @@ struct SettingsView: View {
     
     init(){
         if let data = UserDefaults.standard.value(forKey: "friendsGroups") as? Data {
-            friendsGroups = try! PropertyListDecoder().decode(Array<groupWithLabel>.self, from: data)
+            friendsGroups = try! PropertyListDecoder().decode(Array<GroupWithLabel>.self, from: data)
         } else {
             friendsGroups = []
         }
@@ -27,7 +27,7 @@ struct SettingsView: View {
     @StateObject var vm = SettingsViewModel()
     
     @State var preferredGroup: String = UserDefaults().string(forKey: "preferredGroup") ?? ""
-    @State var friendsGroups: [groupWithLabel]
+    @State var friendsGroups: [GroupWithLabel]
     
     @State var newGroup: String = ""
     @State var newGroupLabel: String = ""
@@ -47,7 +47,6 @@ struct SettingsView: View {
                 .fontWeight(.bold)
                 .padding(18)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            
             Spacer()
                 .frame(height: 20)
             VStack(alignment: .leading) {
@@ -78,8 +77,9 @@ struct SettingsView: View {
                         }
                         HStack{
                             TextField("group", text: $preferredGroup)
-                                .font(.custom("Golos Text VF", size: 16))
+                                .font(.custom("PT Root UI VF", size: 16))
                                 .fontWeight(.medium)
+                                .monospacedDigit()
                                 .disabled(!isEditingMyGroup) //Активировать с кнопки
                                 .focused($focusedField, equals: .myGroup)
                                 .onSubmit {
@@ -152,12 +152,13 @@ struct SettingsView: View {
                             ForEach(friendsGroups, id: \.self){ group in
                                 HStack{
                                     Text(group.label)
-                                        .font(.custom("Golos Text VF", size: 16))
+                                        .font(.custom("PT Root UI VF", size: 16))
                                         .fontWeight(.medium)
                                     Spacer()
                                     Text(group.group.longDash())
-                                        .font(.custom("Golos Text VF", size: 16))
+                                        .font(.custom("PT Root UI VF", size: 16))
                                         .fontWeight(.regular)
+                                        .monospacedDigit()
                                         .opacity(0.7)
                                     if isEditingFriendsGroups {
                                         Button{
@@ -178,11 +179,12 @@ struct SettingsView: View {
                                 HStack{
                                     if groupNumberTyped {
                                         TextField("tag", text: $newGroupLabel)
-                                            .font(.custom("Golos Text VF", size: 16))
+                                            .font(.custom("PT Root UI VF", size: 16))
                                             .fontWeight(.medium)
+                                            .monospacedDigit()
                                             .focused($focusedField, equals: .friendGroupLabel)
                                             .onSubmit {
-                                                friendsGroups.append(groupWithLabel(label: newGroupLabel, group: newGroup))
+                                                friendsGroups.append(GroupWithLabel(label: newGroupLabel, group: newGroup))
                                                 UserDefaults.standard.set(try? PropertyListEncoder().encode(friendsGroups), forKey: "friendsGroups")
                                                 newGroup.removeAll()
                                                 newGroupLabel.removeAll()
@@ -191,12 +193,12 @@ struct SettingsView: View {
                                             }
                                         Spacer()
                                         Text(newGroup.longDash())
-                                            .font(.custom("Golos Text VF", size: 16))
+                                            .font(.custom("PT Root UI VF", size: 16))
                                             .fontWeight(.regular)
                                             .opacity(0.7)
                                     } else {
                                         TextField("group", text: $newGroup)
-                                            .font(.custom("Golos Text VF", size: 16))
+                                            .font(.custom("PT Root UI VF", size: 16))
                                             .fontWeight(.medium)
                                             .focused($focusedField, equals: .friendGroup)
                                             .onSubmit {
@@ -225,7 +227,8 @@ struct SettingsView: View {
                         .background(Color(tm.getTheme().backgroundColor))
                         .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                         Text("friendsGroupsDescription")
-                            .font(.custom("Golos Text VF", size: 13))
+                            .font(.custom("PT Root UI VF", size: 13))
+                            .fontWeight(.semibold)
                             .foregroundColor(Color(tm.getTheme().foregroundColor).opacity(0.7))
                         
                         
@@ -245,7 +248,8 @@ struct SettingsView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 VStack(spacing: 18){
                     Text("themeDescription")
-                        .font(.custom("Golos Text VF", size: 13))
+                        .font(.custom("PT Root UI VF", size: 13))
+                        .fontWeight(.semibold)
                         .foregroundColor(Color(tm.getTheme().foregroundColor).opacity(0.7))
                     VStack(spacing: 4){
                         ClassView(classObject: ClassModel(name: "Физика", ordinal: 1, type: .lecture, location: "ГУК Б-261")).disabled(true)
@@ -313,7 +317,7 @@ struct SettingsView: View {
     }
 }
 
-struct groupWithLabel : Hashable, Codable {
+struct GroupWithLabel : Hashable, Codable {
     var label: String
     var group: String
 }

@@ -10,12 +10,21 @@
       }
     },
     {
-      "identity" : "swift-markdown-ui",
+      "identity" : "filepicker",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/gonzalezreal/swift-markdown-ui",
+      "location" : "https://github.com/mleykhner/FilePicker",
       "state" : {
-        "revision" : "5e15c0d75e42b9840301503e0df681027d4bea05",
-        "version" : "2.0.1"
+        "branch" : "main",
+        "revision" : "6e9d679333e4ae8b815c7b85fddf5d1b6747c8ab"
+      }
+    },
+    {
+      "identity" : "swiftui-image-viewer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Jake-Short/swiftui-image-viewer.git",
+      "state" : {
+        "revision" : "f61f298c0100c81dfb0c7908091e68aad12a892c",
+        "version" : "2.3.1"
       }
     },
     {
@@ -25,6 +34,15 @@
       "state" : {
         "revision" : "4ddc04c801aac143090bb14cf26603a3bf9c74cb",
         "version" : "2.5.0"
+      }
+    },
+    {
+      "identity" : "url-image",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dmytro-anokhin/url-image.git",
+      "state" : {
+        "revision" : "ccab89ad1cedb04f25dd4df1776dd8c8583b914a",
+        "version" : "2.2.5"
       }
     }
   ],

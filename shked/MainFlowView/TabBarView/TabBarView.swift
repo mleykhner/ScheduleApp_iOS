@@ -60,7 +60,8 @@ struct TabBarView: View {
                 
                 
                 VStack(spacing: 4){
-                    Image(systemName: "book")
+                    //Image(systemName: "book")
+                    Image("book.and.lock")
                         .font(.system(size: 24))
                     Text("tasks")
                         .font(.custom("Unbounded", size: 12))

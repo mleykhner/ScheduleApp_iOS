@@ -36,7 +36,7 @@ struct CalendarView: View {
                                 selectedDay = Date()
                             } label: {
                                 HStack{
-                                    Text("Вернуться к сегодня")
+                                    Text("backToToday")
                                     Image(systemName: "calendar.circle")
                                 }
                             }

@@ -14,7 +14,7 @@ struct InfoMessageView: View {
     var body: some View {
         HStack(spacing: 12){
             Text(messageText)
-                .font(.custom("Golos Text VF", size: 16))
+                .font(.custom("PT Root UI VF", size: 16))
                 .foregroundColor(Color.black)
             ProgressView()
                 .tint(Color.black)

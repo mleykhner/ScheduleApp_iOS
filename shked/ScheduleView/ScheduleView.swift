@@ -20,21 +20,84 @@ struct ScheduleView: View {
     @State var headerHeight: CGFloat = CGFloat.zero
     @State var scrollOffset: CGPoint = CGPoint.zero
     
+    @State var selectedPage: Int = 1
+    private let pageGap: CGFloat = 50.0
+    @State var horizontalOffset: CGFloat = 0
+    @State var lastHorizonalOffset: CGFloat = 0
+    
     var body: some View {
         ZStack(alignment: .bottom){
-            OffsetObservingScrollView(axes: .vertical, showsIndicators: false, offset: $scrollOffset){
-                    Spacer()
-                        .frame(height: headerHeight)
-                    showClasses(vm.getClassesForDate(selectedDay))
-                    Spacer()
-                        .frame(height: 223)
-                }
-                .refreshable{
-                    if !sm.loading {
-                        vm.reload()
+            
+            GeometryReader { proxy in
+                //MARK: Убрать скроллвью в боковых страницах
+                HStack(spacing: pageGap) {
+                    DayScheduleScrollView(headerHeight: headerHeight, classes: vm.getClassesForDate(selectedDay.addingTimeInterval(-86400)), offset: $scrollOffset)
+                        .frame(width: proxy.size.width, height: proxy.size.height)
+                        .background(Color.clear)
+                        .refreshable{
+                            if !sm.loading {
+                                vm.reload()
+                            }
+                        }
+                    ZStack {
+                        Color.white.opacity(0.00001)
+                        DayScheduleScrollView(headerHeight: headerHeight, classes: vm.getClassesForDate(selectedDay), offset: $scrollOffset)
+                            .frame(width: proxy.size.width, height: proxy.size.height)
+                            .refreshable{
+                                if !sm.loading {
+                                    vm.reload()
+                                }
+                        }
                     }
+                    DayScheduleScrollView(headerHeight: headerHeight, classes: vm.getClassesForDate(selectedDay.addingTimeInterval(86400)), offset: $scrollOffset)
+                        .frame(width: proxy.size.width, height: proxy.size.height)
+                        .refreshable{
+                            if !sm.loading {
+                                vm.reload()
+                            }
+                        }
+                }
+                .frame(width: proxy.size.width * 3 + pageGap * 2)
+                .offset(CGSize(width: -horizontalOffset, height: 0))
+                .onAppear {
+                    horizontalOffset = CGFloat(selectedPage) * (proxy.size.width + pageGap)
+                    lastHorizonalOffset = horizontalOffset
+                }
+                .gesture(
+                    DragGesture(minimumDistance: 10)
+                        .onChanged({ value in
+                            horizontalOffset = lastHorizonalOffset - value.translation.width
+                        })
+                        .onEnded({ value in
+                            if value.translation.width < -proxy.size.width * 0.3 {
+                                selectedPage += 1
+                            } else if value.translation.width > proxy.size.width * 0.3 {
+                                selectedPage -= 1
+                            }
+                            withAnimation(.easeOut(duration: 0.3)) {
+                                horizontalOffset = CGFloat(selectedPage) * (proxy.size.width + pageGap)
+                            }
+                            lastHorizonalOffset = horizontalOffset
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+                                if selectedPage == 2 {
+                                    selectedDay = selectedDay.addingTimeInterval(86400)
+                                    selectedPage = 1
+                                } else if selectedPage == 0 {
+                                    selectedDay = selectedDay.addingTimeInterval(-86400)
+                                    selectedPage = 1
+                                }
+                                horizontalOffset = CGFloat(selectedPage) * (proxy.size.width + pageGap)
+                                lastHorizonalOffset = horizontalOffset
+                            })
+                        })
+                )
+                .onChange(of: scrollOffset) { _ in
+                    horizontalOffset = CGFloat(selectedPage) * (proxy.size.width + pageGap)
+                }
             }
             
+
             
             VStack {
                 VStack {
@@ -46,24 +109,29 @@ struct ScheduleView: View {
                     HStack(alignment: .center) {
                         Text(vm.schedule?.groupName.longDash() ?? "Группа не установлена")
                             .font(.custom("Unbounded", size: 32))
+                            .scaledToFit()
+                            .minimumScaleFactor(0.1)
+                            .lineLimit(1)
                             .fontWeight(.bold)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             
-                        
-                        Button {
-                            showSettings.toggle()
-                        } label: {
-                            Image(systemName: "gearshape")
-                                .font(.system(size: 24))
-                        }
-                        .popover(isPresented: $showSettings) {
-                            SettingsView()
-                        }
-                        .onChange(of: showSettings) { newValue in
-                            if !newValue {
-                                vm.reload()
+                     
+                            Button {
+                                showSettings.toggle()
+                            } label: {
+                                Image(systemName: "gearshape")
+                                    .font(.system(size: 24))
                             }
-                        }
+                            .popover(isPresented: $showSettings) {
+                                SettingsView()
+                            }
+                            .onChange(of: showSettings) { newValue in
+                                if !newValue {
+                                    vm.reload()
+                                }
+                            }
+                        
+                        
                     }
                     .foregroundColor(Color(tm.getTheme().foregroundColor))
                     .padding(12)
@@ -78,31 +146,12 @@ struct ScheduleView: View {
                     Rectangle()
                         .foregroundColor(Color.clear)
                         .background(Material.ultraThin.opacity(scrollOffset.y > 0 ? 1 : 0))
-                        .animation(.easeIn(duration: 0.3), value: scrollOffset.y)
+                        .animation(.easeIn(duration: 0.1), value: scrollOffset.y)
                 )
                 Spacer()
             }
-            
             CalendarView(selectedDay: $selectedDay)
                 .padding(.bottom, 59)
-        }
-    }
-    
-    func showClasses(_ classes: [ClassModel]) -> some View {
-        var hasSecondClass = false
-        classes.forEach { classObject in
-            if classObject.ordinal == 2 {
-                hasSecondClass = true
-            }
-        }
-        return Group {
-            ForEach(classes, id: \.self) {
-                classObject in
-                if hasSecondClass && classObject.ordinal == 3 {
-                    BreakView()
-                }
-                ClassView(classObject: classObject/*, colorId: 1*/)
-            }
         }
     }
 }
@@ -197,5 +246,38 @@ struct OffsetObservingScrollView<Content: View>: View {
             )
         }
         .coordinateSpace(name: coordinateSpaceName)
+    }
+}
+
+struct DayScheduleScrollView: View {
+    var headerHeight: CGFloat
+    var classes: [ClassModel]
+    var offset: Binding<CGPoint>
+    var body: some View {
+        OffsetObservingScrollView(axes: .vertical, showsIndicators: false, offset: offset){
+            Spacer()
+                .frame(height: headerHeight)
+            showClasses(classes)
+            Spacer()
+                .frame(height: 223)
+        }
+    }
+    
+    func showClasses(_ classes: [ClassModel]) -> some View {
+        var hasSecondClass = false
+        classes.forEach { classObject in
+            if classObject.ordinal == 2 {
+                hasSecondClass = true
+            }
+        }
+        return Group {
+            ForEach(classes, id: \.self) {
+                classObject in
+                if hasSecondClass && classObject.ordinal == 3 {
+                    BreakView()
+                }
+                ClassView(classObject: classObject/*, colorId: 1*/)
+            }
+        }
     }
 }

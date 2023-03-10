@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import MarkdownUI
 
 struct TaskView: View {
     
@@ -16,30 +15,7 @@ struct TaskView: View {
     
     var body: some View {
         if let text = task.text {
-            Markdown(text)
-                .markdownTheme(
-                    .gitHub
-                        .text {
-                            ForegroundColor(Color(tm.getTheme().foregroundColor))
-                        }
-                        .link {
-                            //MARK: Добавить акцентный цвет в темы
-                            ForegroundColor(tm.getTheme().getColor(4))
-                            UnderlineStyle(.single)
-                        }
-                        .tableCell { configuration in
-                          configuration.label
-                            .markdownTextStyle {
-                              if configuration.row == 0 {
-                                FontWeight(.semibold)
-                              }
-                              BackgroundColor(nil)
-                            }
-                            .padding(.vertical, 6)
-                            .padding(.horizontal, 13)
-                            .frame(maxWidth: .infinity)
-                            .relativeLineSpacing(.em(0.25))
-                        }                )
+            Text(text)
                 .frame(maxWidth: .infinity, alignment: .leading)
             HStack {
                 Button {
@@ -51,7 +27,7 @@ struct TaskView: View {
                             .fontWeight(.medium)
                             .frame(width: 20, height: 20)
                         Text(task.isDone ? "Выполнено" : "Выполнить")
-                            .font(.custom("Golos Text VF", size: 16))
+                            .font(.custom("PT Root UI VF", size: 16))
                             .fontWeight(.medium)
                     }
                     
@@ -75,11 +51,11 @@ struct TaskView: View {
             Divider()
             HStack {
                 Text("До 12 марта")
-                    .font(.custom("Golos Text VF", size: 14))
+                    .font(.custom("PT Root UI VF", size: 14))
                     .fontWeight(.semibold)
                 Spacer()
                 Text("Добавил ты")
-                    .font(.custom("Golos Text VF", size: 14))
+                    .font(.custom("PT Root UI VF", size: 14))
                     .fontWeight(.thin)
             }
             .foregroundColor(Color(tm.getTheme().foregroundColor).opacity(0.5))

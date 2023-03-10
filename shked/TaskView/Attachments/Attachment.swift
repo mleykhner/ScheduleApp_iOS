@@ -6,9 +6,14 @@
 //
 
 import Foundation
+import UniformTypeIdentifiers
 
 struct Attachment : Identifiable, Codable {
     var id: String = UUID().uuidString
-    var thumbnailUrl: String
-    var fileUrl: String
+    var thumbnail: Data
+    var fileUrl: String?
+    var fileData: Data?
+    var type: UTType
 }
+
+

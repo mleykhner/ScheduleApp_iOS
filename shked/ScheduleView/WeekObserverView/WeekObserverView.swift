@@ -88,6 +88,29 @@ struct WeekObserverView: View {
         })
         .itemSpacing(50)
         .frame(height: 48)
+        .onChange(of: selectedDay) { newDay in
+            var sameWeek = false
+            let week = vm.fetchWeek(vm.deltaWeek(delta: deltaWeeks[page.index], day: originDate))
+            week.forEach { day in
+                if day.isSameAs(newDay) {
+                    sameWeek = true
+                }
+            }
+            if !sameWeek {
+                print("Different week")
+                if newDay.isSameAs(week.last?.getNextDay() ?? Date()) {
+                    page.update(.next)
+                } else if newDay.isSameAs(week.first?.getPreviousDay() ?? Date()) {
+                    page.update(.previous)
+                } else {
+                    deltaWeeks = [-3, -2, -1, 0, 1, 2, 3]
+                    page.index = 3
+                    previousPageIndex = 3
+                    originDate = newDay
+                }
+                previousPageIndex = page.index
+            }
+        }
         
     }
 }
@@ -111,5 +134,16 @@ extension View {
 
         if condition { modifierT(self) }
         else { modifierU(self) }
+    }
+}
+
+extension Date {
+    
+    func getNextDay() -> Date {
+        return self.addingTimeInterval(86400)
+    }
+    
+    func getPreviousDay() -> Date {
+        return self.addingTimeInterval(-86400)
     }
 }

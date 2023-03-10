@@ -29,6 +29,8 @@ struct ClassView: View {
     @State var currentClass: Bool = false
     @State private var taskOpened: Bool = false
     
+    @State private var taskEditorOpened: Bool = false
+    
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -67,19 +69,19 @@ struct ClassView: View {
                         HStack {
                             HStack(spacing: 14){
                                 Text(classObject.type.getLocalizedName().uppercased())
-                                    .fontWeight(.semibold)
+                                    .fontWeight(.black)
                                     .padding(.horizontal, 6)
                                     .padding(.vertical, 3)
                                     .overlay{
                                         RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                            .stroke(lineWidth: 2.5)
+                                            .stroke(lineWidth: 2)
                                     }
                                     
                                 Text(classObject.location)
-                                    .fontWeight(.semibold)
+                                    .fontWeight(.bold)
                                 Text(classObject.getTimeString())
                             }
-                            .font(.custom("Golos Text VF", size: 16))
+                            .font(.custom("PT Root UI VF", size: 16))
                             .foregroundColor(getContrastColor(tm.getTheme().getColorName(colorId)).opacity(0.75))
                             Spacer()
                             Button{
@@ -101,10 +103,12 @@ struct ClassView: View {
                     
             }
                 VStack(alignment: .leading){
-                    HStack {
+                    HStack (alignment: .center) {
                         Image(systemName: "person")
+                            .font(.system(size: 20))
                         Text(classObject.teacher?.capitalized ?? "–")
-                            .font(.custom("Golos Text VF", size: 16))
+                            .font(.custom("PT Root UI VF", size: 16))
+                            .fontWeight(.semibold)
                     }
                     Divider()
                     if let task = task {
@@ -112,15 +116,20 @@ struct ClassView: View {
                     } else {
                         HStack{
                             Text("noTask")
-                                .font(.custom("Golos Text VF", size: 16))
+                                .font(.custom("PT Root UI VF", size: 16))
+                                .fontWeight(.semibold)
                             Spacer()
                             Button {
-                                //tm.setTheme(SWAGTheme())
+                                taskEditorOpened.toggle()
                             } label: {
-                                Label("add", systemImage: "plus")
-                                    .font(.custom("Golos Text VF", size: 16))
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(Color(tm.getTheme().foregroundColor))
+                                HStack (alignment: .center) {
+                                    Image(systemName: "plus")
+                                        .font(.system(size: 20))
+                                    Text("add")
+                                        .font(.custom("PT Root UI VF", size: 16))
+                                        .fontWeight(.bold)
+                                }
+                                .foregroundColor(Color(tm.getTheme().foregroundColor))
                             }
                         }
                     }
@@ -137,6 +146,9 @@ struct ClassView: View {
         .frame(maxWidth: .infinity)
         .background(tm.getTheme().getColor(colorId))
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+        .popover(isPresented: $taskEditorOpened) {
+            TaskEditorView()
+        }
         
     }
     
