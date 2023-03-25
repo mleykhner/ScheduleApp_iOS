@@ -8,6 +8,8 @@
 import Foundation
 import Alamofire
 import UIKit
+import Keys
+
 
 class ScheduleManager : ObservableObject {
     
@@ -19,7 +21,9 @@ class ScheduleManager : ObservableObject {
     @Published var errorCode: Int? = nil
     
     func loadData(_ group: String) async -> Data? {
+        let keys = ShkedKeys()
         //var result: Data?
+        //Text
         DispatchQueue.main.async {
             self.loading = true
         }
@@ -28,7 +32,7 @@ class ScheduleManager : ObservableObject {
             "User-Id": "developer" + (UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString)
         ]
         
-        let dataTask = AF.request("http://172.27.132.170:8080/Groups/\(group)".encodeUrl, method: .get, headers: headers, requestModifier: { $0.timeoutInterval = 15 }).serializingData()
+        let dataTask = AF.request("\(keys.backendURL)/Groups/\(group)".encodeUrl, method: .get, headers: headers, requestModifier: { $0.timeoutInterval = 15 }).serializingData()
         
         if let data = try? await dataTask.value {
             DispatchQueue.main.async {

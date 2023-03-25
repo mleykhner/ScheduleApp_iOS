@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7905275BAC65F939288AFDEA /* libPods-shked.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB72D570B24E9D508272F362 /* libPods-shked.a */; };
+		26C84340F05D9EE227D86AE5 /* Pods_shked.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C88794F13B8A34C35D9C88 /* Pods_shked.framework */; };
 		AD07489429B8BE360047EDF8 /* Attachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07489329B8BE360047EDF8 /* Attachment.swift */; };
 		AD07489629B8BE5B0047EDF8 /* AttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07489529B8BE5B0047EDF8 /* AttachmentView.swift */; };
 		AD108B0029B72DB700E4755E /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD108AFF29B72DB700E4755E /* TaskModel.swift */; };
@@ -61,6 +61,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		164EB6341A8DF83D8703EC4E /* Pods-shked.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shked.debug.xcconfig"; path = "Target Support Files/Pods-shked/Pods-shked.debug.xcconfig"; sourceTree = "<group>"; };
+		56C88794F13B8A34C35D9C88 /* Pods_shked.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_shked.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD07489329B8BE360047EDF8 /* Attachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachment.swift; sourceTree = "<group>"; };
 		AD07489529B8BE5B0047EDF8 /* AttachmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentView.swift; sourceTree = "<group>"; };
 		AD108AFF29B72DB700E4755E /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
@@ -111,9 +113,7 @@
 		ADB51D1E29C06A0300238F70 /* PinchZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchZoomView.swift; sourceTree = "<group>"; };
 		ADB51D2029C0C8CF00238F70 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		ADDD58D829A8C78A0041A8D0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		B5EE23A2C47F81680F5BA3FA /* Pods-shked.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shked.debug.xcconfig"; path = "Target Support Files/Pods-shked/Pods-shked.debug.xcconfig"; sourceTree = "<group>"; };
-		BBCAAB8C30E99D1477EDFB84 /* Pods-shked.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shked.release.xcconfig"; path = "Target Support Files/Pods-shked/Pods-shked.release.xcconfig"; sourceTree = "<group>"; };
-		EB72D570B24E9D508272F362 /* libPods-shked.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-shked.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9CE6DF619610C1160571789 /* Pods-shked.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shked.release.xcconfig"; path = "Target Support Files/Pods-shked/Pods-shked.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,21 +125,29 @@
 				ADB51D0329BE637000238F70 /* FilePicker in Frameworks */,
 				AD8F772D29A2C9CC00A35DE1 /* SwiftUIPager in Frameworks */,
 				AD49994229AD1E700036E543 /* Alamofire in Frameworks */,
-				7905275BAC65F939288AFDEA /* libPods-shked.a in Frameworks */,
+				26C84340F05D9EE227D86AE5 /* Pods_shked.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6D8E2680D06110D2C12CB9C6 /* Pods */ = {
+		30E098D5DE4680EB6FE5F742 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B5EE23A2C47F81680F5BA3FA /* Pods-shked.debug.xcconfig */,
-				BBCAAB8C30E99D1477EDFB84 /* Pods-shked.release.xcconfig */,
+				164EB6341A8DF83D8703EC4E /* Pods-shked.debug.xcconfig */,
+				B9CE6DF619610C1160571789 /* Pods-shked.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		73217A5DFCD92F6EA3746886 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				56C88794F13B8A34C35D9C88 /* Pods_shked.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		AD07489229B8BE180047EDF8 /* Attachments */ = {
@@ -257,8 +265,8 @@
 			children = (
 				ADA5C1B729A0E99C005B9261 /* shked */,
 				ADA5C1B629A0E99C005B9261 /* Products */,
-				6D8E2680D06110D2C12CB9C6 /* Pods */,
-				ECB4469FE6449725977F9EB0 /* Frameworks */,
+				30E098D5DE4680EB6FE5F742 /* Pods */,
+				73217A5DFCD92F6EA3746886 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -366,14 +374,6 @@
 			path = SettingsView;
 			sourceTree = "<group>";
 		};
-		ECB4469FE6449725977F9EB0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				EB72D570B24E9D508272F362 /* libPods-shked.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -381,10 +381,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ADA5C1C329A0E99E005B9261 /* Build configuration list for PBXNativeTarget "shked" */;
 			buildPhases = (
-				8D1A47764D935D1919E1C625 /* [CP] Check Pods Manifest.lock */,
+				B8C091F1253FE3F4D6A503DF /* [CP] Check Pods Manifest.lock */,
 				ADA5C1B129A0E99C005B9261 /* Sources */,
 				ADA5C1B229A0E99C005B9261 /* Frameworks */,
 				ADA5C1B329A0E99C005B9261 /* Resources */,
+				92C84116129E55B9EAE8004A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -463,7 +464,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8D1A47764D935D1919E1C625 /* [CP] Check Pods Manifest.lock */ = {
+		92C84116129E55B9EAE8004A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-shked/Pods-shked-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-shked/Pods-shked-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-shked/Pods-shked-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8C091F1253FE3F4D6A503DF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -671,7 +689,7 @@
 		};
 		ADA5C1C429A0E99E005B9261 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5EE23A2C47F81680F5BA3FA /* Pods-shked.debug.xcconfig */;
+			baseConfigurationReference = 164EB6341A8DF83D8703EC4E /* Pods-shked.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -708,7 +726,7 @@
 		};
 		ADA5C1C529A0E99E005B9261 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BBCAAB8C30E99D1477EDFB84 /* Pods-shked.release.xcconfig */;
+			baseConfigurationReference = B9CE6DF619610C1160571789 /* Pods-shked.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

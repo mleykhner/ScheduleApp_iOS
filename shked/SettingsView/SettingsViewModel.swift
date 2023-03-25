@@ -8,12 +8,14 @@
 import Foundation
 import Alamofire
 import UIKit
+import Keys
 
 class SettingsViewModel : ObservableObject {
     
     @Published var isCheckingGroupValidity: Bool = false
     
     func checkGroupName(_ group: String) async -> GroupValidityResponse? {
+        let keys = ShkedKeys()
         let pattern = "[^А-Яа-я0-9]+"
         let preparedGroup = group.replacingOccurrences(of: pattern, with: "", options: .regularExpression).lowercased()
         DispatchQueue.main.async {
@@ -25,7 +27,7 @@ class SettingsViewModel : ObservableObject {
             "User-Id": "developer" + (UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString)
         ]
         
-        let request = "http://172.27.132.170:8080/Groups/GetGroupValidity/\(preparedGroup)".encodeUrl
+        let request = "\(keys.backendURL)/Groups/GetGroupValidity/\(preparedGroup)".encodeUrl
         
         print(request)
         
