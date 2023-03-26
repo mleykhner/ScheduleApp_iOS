@@ -15,7 +15,7 @@ struct MainFlowView: View {
         ZStack(alignment: .bottom){
             switch activeTab {
             case .news:
-                Spacer()
+                AuthView()
                     .frame(maxHeight: .infinity)
             case .schedule:
                 ScheduleView()

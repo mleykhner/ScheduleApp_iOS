@@ -17,6 +17,8 @@
 		AD23D4BD29A16DD6007D39C7 /* BreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD23D4BC29A16DD6007D39C7 /* BreakView.swift */; };
 		AD23D4C029A17A1A007D39C7 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD23D4BF29A17A1A007D39C7 /* ScheduleView.swift */; };
 		AD23D4C329A17ACD007D39C7 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD23D4C229A17ACD007D39C7 /* CalendarView.swift */; };
+		AD38E14029CF1E62000B27EE /* VKAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38E13F29CF1E62000B27EE /* VKAuth.swift */; };
+		AD38E14229CF27FA000B27EE /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38E14129CF27FA000B27EE /* AuthView.swift */; };
 		AD49994229AD1E700036E543 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AD49994129AD1E700036E543 /* Alamofire */; };
 		AD49994429ADE6C60036E543 /* InfoMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49994329ADE6C50036E543 /* InfoMessageView.swift */; };
 		AD784CBC29A4BB17006D648E /* WeekObserverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD784CBB29A4BB17006D648E /* WeekObserverView.swift */; };
@@ -72,6 +74,9 @@
 		AD23D4BC29A16DD6007D39C7 /* BreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakView.swift; sourceTree = "<group>"; };
 		AD23D4BF29A17A1A007D39C7 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		AD23D4C229A17ACD007D39C7 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		AD38E13F29CF1E62000B27EE /* VKAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKAuth.swift; sourceTree = "<group>"; };
+		AD38E14129CF27FA000B27EE /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		AD38E14329CF5278000B27EE /* shked.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = shked.entitlements; sourceTree = "<group>"; };
 		AD49994329ADE6C50036E543 /* InfoMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMessageView.swift; sourceTree = "<group>"; };
 		AD784CBB29A4BB17006D648E /* WeekObserverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekObserverView.swift; sourceTree = "<group>"; };
 		AD784CBD29A4D0CB006D648E /* WeekObserverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekObserverViewModel.swift; sourceTree = "<group>"; };
@@ -138,7 +143,6 @@
 				164EB6341A8DF83D8703EC4E /* Pods-shked.debug.xcconfig */,
 				B9CE6DF619610C1160571789 /* Pods-shked.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -208,6 +212,15 @@
 				AD8E4A2F29A2B461003AB9A1 /* CalendarViewModel.swift */,
 			);
 			path = CalendarView;
+			sourceTree = "<group>";
+		};
+		AD38E13E29CF168C000B27EE /* Authentification */ = {
+			isa = PBXGroup;
+			children = (
+				AD38E13F29CF1E62000B27EE /* VKAuth.swift */,
+				AD38E14129CF27FA000B27EE /* AuthView.swift */,
+			);
+			path = Authentification;
 			sourceTree = "<group>";
 		};
 		AD784CBA29A4BA8C006D648E /* WeekObserverView */ = {
@@ -281,6 +294,8 @@
 		ADA5C1B729A0E99C005B9261 /* shked */ = {
 			isa = PBXGroup;
 			children = (
+				AD38E14329CF5278000B27EE /* shked.entitlements */,
+				AD38E13E29CF168C000B27EE /* Authentification */,
 				ADB51CE429BDCF7700238F70 /* TaskEditorView */,
 				AD108AFE29B72D9800E4755E /* TaskView */,
 				ADDD58D729A8C76C0041A8D0 /* SettingsView */,
@@ -427,10 +442,10 @@
 			);
 			mainGroup = ADA5C1AC29A0E99C005B9261;
 			packageReferences = (
-				AD8F772B29A2C9CC00A35DE1 /* XCRemoteSwiftPackageReference "SwiftUIPager.git" */,
-				AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire.git" */,
+				AD8F772B29A2C9CC00A35DE1 /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
+				AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				ADB51D0129BE637000238F70 /* XCRemoteSwiftPackageReference "FilePicker" */,
-				ADB51D0829BF9EAC00238F70 /* XCRemoteSwiftPackageReference "swiftui-image-viewer.git" */,
+				ADB51D0829BF9EAC00238F70 /* XCRemoteSwiftPackageReference "swiftui-image-viewer" */,
 			);
 			productRefGroup = ADA5C1B629A0E99C005B9261 /* Products */;
 			projectDirPath = "";
@@ -522,6 +537,7 @@
 				AD23D4C329A17ACD007D39C7 /* CalendarView.swift in Sources */,
 				AD784CBE29A4D0CB006D648E /* WeekObserverViewModel.swift in Sources */,
 				ADDD58D929A8C78A0041A8D0 /* SettingsView.swift in Sources */,
+				AD38E14029CF1E62000B27EE /* VKAuth.swift in Sources */,
 				AD07489629B8BE5B0047EDF8 /* AttachmentView.swift in Sources */,
 				ADA5C1BB29A0E99C005B9261 /* ContentView.swift in Sources */,
 				AD8E4A3029A2B462003AB9A1 /* CalendarViewModel.swift in Sources */,
@@ -535,6 +551,7 @@
 				ADB51D2129C0C8CF00238F70 /* TaskManager.swift in Sources */,
 				ADB51D0529BF7A0A00238F70 /* ImageThumbnail.swift in Sources */,
 				ADA5C1B929A0E99C005B9261 /* shkedApp.swift in Sources */,
+				AD38E14229CF27FA000B27EE /* AuthView.swift in Sources */,
 				ADA5C1D629A120EF005B9261 /* ClassModel.swift in Sources */,
 				AD108B0029B72DB700E4755E /* TaskModel.swift in Sources */,
 				AD8E4A2929A272F2003AB9A1 /* CalmTheme.swift in Sources */,
@@ -693,6 +710,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = shked/shked.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"shked/Preview Content\"";
@@ -730,6 +748,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = shked/shked.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"shked/Preview Content\"";
@@ -785,7 +804,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire.git" */ = {
+		AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -793,7 +812,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		AD8F772B29A2C9CC00A35DE1 /* XCRemoteSwiftPackageReference "SwiftUIPager.git" */ = {
+		AD8F772B29A2C9CC00A35DE1 /* XCRemoteSwiftPackageReference "SwiftUIPager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fermoya/SwiftUIPager.git";
 			requirement = {
@@ -809,7 +828,7 @@
 				kind = branch;
 			};
 		};
-		ADB51D0829BF9EAC00238F70 /* XCRemoteSwiftPackageReference "swiftui-image-viewer.git" */ = {
+		ADB51D0829BF9EAC00238F70 /* XCRemoteSwiftPackageReference "swiftui-image-viewer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Jake-Short/swiftui-image-viewer.git";
 			requirement = {
@@ -822,12 +841,12 @@
 /* Begin XCSwiftPackageProductDependency section */
 		AD49994129AD1E700036E543 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire.git" */;
+			package = AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 		AD8F772C29A2C9CC00A35DE1 /* SwiftUIPager */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AD8F772B29A2C9CC00A35DE1 /* XCRemoteSwiftPackageReference "SwiftUIPager.git" */;
+			package = AD8F772B29A2C9CC00A35DE1 /* XCRemoteSwiftPackageReference "SwiftUIPager" */;
 			productName = SwiftUIPager;
 		};
 		ADB51D0229BE637000238F70 /* FilePicker */ = {
@@ -837,7 +856,7 @@
 		};
 		ADB51D0929BF9EAC00238F70 /* ImageViewer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = ADB51D0829BF9EAC00238F70 /* XCRemoteSwiftPackageReference "swiftui-image-viewer.git" */;
+			package = ADB51D0829BF9EAC00238F70 /* XCRemoteSwiftPackageReference "swiftui-image-viewer" */;
 			productName = ImageViewer;
 		};
 /* End XCSwiftPackageProductDependency section */
