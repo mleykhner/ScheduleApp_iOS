@@ -29,12 +29,40 @@ struct ImageThumbnail: View {
                 isPresented.toggle()
             }
             .fullScreenCover(isPresented: $isPresented) {
-                Image(uiImage: UIImage(data: imageData)!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .pinchToZoom()
+                PinchZoomView(imageData: imageData)
+                    .ignoresSafeArea()
+                    .overlay(alignment: .topTrailing) {
+                        Button {
+                            isPresented.toggle()
+                        } label: {
+                            Image(systemName: "xmark")
+                                .font(.system(size: 20))
+                                .padding(10)
+                                .background(Material.ultraThin)
+                                .clipShape(Circle())
+                                .padding(12)
+                        }
+                    }
             }
+//            .fullScreenCover(isPresented: $isPresented) {
+//                Image(uiImage: UIImage(data: imageData)!)
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+//                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                    .pinchToZoom()
+//                    .overlay(alignment: .topTrailing) {
+//                        Button {
+//                            isPresented.toggle()
+//                        } label: {
+//                            Image(systemName: "xmark")
+//                                .font(.system(size: 20))
+//                                .padding(10)
+//                                .background(Material.ultraThin)
+//                                .clipShape(Circle())
+//                                .padding(12)
+//                        }
+//                    }
+//            }
         
     }
 }

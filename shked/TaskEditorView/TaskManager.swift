@@ -18,11 +18,11 @@ class TaskManager : ObservableObject {
     @Published var uploadingProgress = Float.zero
     
     func uploadAttachment(_ attachment: Attachment) async {
-        let keys = ShkedKeys()
-        let headers: HTTPHeaders = await [
-            "User-Id": "developer" + (UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString),
-            "Content-Type" : attachment.type.preferredMIMEType ?? ""
-        ]
-        //AF.upload()
+//        let keys = ShkedKeys()
+//        let headers: HTTPHeaders = await [
+//            "User-Id": "developer" + (UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString),
+//            "Content-Type" : attachment.type.preferredMIMEType ?? ""
+//        ]
+//        //AF.upload()
     }
 }

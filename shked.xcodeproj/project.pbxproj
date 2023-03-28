@@ -54,10 +54,9 @@
 		ADB51CF529BDE3BC00238F70 /* PT Mono Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADB51CF329BDE3BC00238F70 /* PT Mono Regular.ttf */; };
 		ADB51D0329BE637000238F70 /* FilePicker in Frameworks */ = {isa = PBXBuildFile; productRef = ADB51D0229BE637000238F70 /* FilePicker */; };
 		ADB51D0529BF7A0A00238F70 /* ImageThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB51D0429BF7A0A00238F70 /* ImageThumbnail.swift */; };
-		ADB51D0A29BF9EAC00238F70 /* ImageViewer in Frameworks */ = {isa = PBXBuildFile; productRef = ADB51D0929BF9EAC00238F70 /* ImageViewer */; };
-		ADB51D1F29C06A0400238F70 /* PinchZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB51D1E29C06A0300238F70 /* PinchZoomView.swift */; };
 		ADB51D2129C0C8CF00238F70 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB51D2029C0C8CF00238F70 /* TaskManager.swift */; };
 		ADDD58D929A8C78A0041A8D0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDD58D829A8C78A0041A8D0 /* SettingsView.swift */; };
+		ADE66F6B29D08C330014A9FD /* ImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE66F6A29D08C330014A9FD /* ImageViewer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,9 +109,9 @@
 		ADB51CF229BDE3BC00238F70 /* PT Mono Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT Mono Bold.ttf"; sourceTree = "<group>"; };
 		ADB51CF329BDE3BC00238F70 /* PT Mono Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT Mono Regular.ttf"; sourceTree = "<group>"; };
 		ADB51D0429BF7A0A00238F70 /* ImageThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageThumbnail.swift; sourceTree = "<group>"; };
-		ADB51D1E29C06A0300238F70 /* PinchZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchZoomView.swift; sourceTree = "<group>"; };
 		ADB51D2029C0C8CF00238F70 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		ADDD58D829A8C78A0041A8D0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		ADE66F6A29D08C330014A9FD /* ImageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewer.swift; sourceTree = "<group>"; };
 		B9CE6DF619610C1160571789 /* Pods-shked.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shked.release.xcconfig"; path = "Target Support Files/Pods-shked/Pods-shked.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,7 +120,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADB51D0A29BF9EAC00238F70 /* ImageViewer in Frameworks */,
 				ADB51D0329BE637000238F70 /* FilePicker in Frameworks */,
 				AD8F772D29A2C9CC00A35DE1 /* SwiftUIPager in Frameworks */,
 				AD49994229AD1E700036E543 /* Alamofire in Frameworks */,
@@ -138,7 +136,6 @@
 				164EB6341A8DF83D8703EC4E /* Pods-shked.debug.xcconfig */,
 				B9CE6DF619610C1160571789 /* Pods-shked.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -156,7 +153,7 @@
 				AD07489329B8BE360047EDF8 /* Attachment.swift */,
 				AD07489529B8BE5B0047EDF8 /* AttachmentView.swift */,
 				ADB51D0429BF7A0A00238F70 /* ImageThumbnail.swift */,
-				ADB51D1E29C06A0300238F70 /* PinchZoomView.swift */,
+				ADE66F6A29D08C330014A9FD /* ImageViewer.swift */,
 			);
 			path = Attachments;
 			sourceTree = "<group>";
@@ -396,7 +393,6 @@
 				AD8F772C29A2C9CC00A35DE1 /* SwiftUIPager */,
 				AD49994129AD1E700036E543 /* Alamofire */,
 				ADB51D0229BE637000238F70 /* FilePicker */,
-				ADB51D0929BF9EAC00238F70 /* ImageViewer */,
 			);
 			productName = shked;
 			productReference = ADA5C1B529A0E99C005B9261 /* shked.app */;
@@ -427,10 +423,9 @@
 			);
 			mainGroup = ADA5C1AC29A0E99C005B9261;
 			packageReferences = (
-				AD8F772B29A2C9CC00A35DE1 /* XCRemoteSwiftPackageReference "SwiftUIPager.git" */,
-				AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire.git" */,
+				AD8F772B29A2C9CC00A35DE1 /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
+				AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				ADB51D0129BE637000238F70 /* XCRemoteSwiftPackageReference "FilePicker" */,
-				ADB51D0829BF9EAC00238F70 /* XCRemoteSwiftPackageReference "swiftui-image-viewer.git" */,
 			);
 			productRefGroup = ADA5C1B629A0E99C005B9261 /* Products */;
 			projectDirPath = "";
@@ -523,6 +518,7 @@
 				AD784CBE29A4D0CB006D648E /* WeekObserverViewModel.swift in Sources */,
 				ADDD58D929A8C78A0041A8D0 /* SettingsView.swift in Sources */,
 				AD07489629B8BE5B0047EDF8 /* AttachmentView.swift in Sources */,
+				ADE66F6B29D08C330014A9FD /* ImageViewer.swift in Sources */,
 				ADA5C1BB29A0E99C005B9261 /* ContentView.swift in Sources */,
 				AD8E4A3029A2B462003AB9A1 /* CalendarViewModel.swift in Sources */,
 				AD784CCC29A666C1006D648E /* ScheduleViewModel.swift in Sources */,
@@ -538,7 +534,6 @@
 				ADA5C1D629A120EF005B9261 /* ClassModel.swift in Sources */,
 				AD108B0029B72DB700E4755E /* TaskModel.swift in Sources */,
 				AD8E4A2929A272F2003AB9A1 /* CalmTheme.swift in Sources */,
-				ADB51D1F29C06A0400238F70 /* PinchZoomView.swift in Sources */,
 				AD784CC329A54CDD006D648E /* MonthObserverViewModel.swift in Sources */,
 				ADA5C1CA29A0EB42005B9261 /* ClassView.swift in Sources */,
 				AD784CC829A5747D006D648E /* ScheduleModel.swift in Sources */,
@@ -785,7 +780,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire.git" */ = {
+		AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -793,7 +788,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		AD8F772B29A2C9CC00A35DE1 /* XCRemoteSwiftPackageReference "SwiftUIPager.git" */ = {
+		AD8F772B29A2C9CC00A35DE1 /* XCRemoteSwiftPackageReference "SwiftUIPager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fermoya/SwiftUIPager.git";
 			requirement = {
@@ -809,36 +804,23 @@
 				kind = branch;
 			};
 		};
-		ADB51D0829BF9EAC00238F70 /* XCRemoteSwiftPackageReference "swiftui-image-viewer.git" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Jake-Short/swiftui-image-viewer.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		AD49994129AD1E700036E543 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire.git" */;
+			package = AD49994029AD1E700036E543 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 		AD8F772C29A2C9CC00A35DE1 /* SwiftUIPager */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AD8F772B29A2C9CC00A35DE1 /* XCRemoteSwiftPackageReference "SwiftUIPager.git" */;
+			package = AD8F772B29A2C9CC00A35DE1 /* XCRemoteSwiftPackageReference "SwiftUIPager" */;
 			productName = SwiftUIPager;
 		};
 		ADB51D0229BE637000238F70 /* FilePicker */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = ADB51D0129BE637000238F70 /* XCRemoteSwiftPackageReference "FilePicker" */;
 			productName = FilePicker;
-		};
-		ADB51D0929BF9EAC00238F70 /* ImageViewer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = ADB51D0829BF9EAC00238F70 /* XCRemoteSwiftPackageReference "swiftui-image-viewer.git" */;
-			productName = ImageViewer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
